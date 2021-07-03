@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Html Project | Dashboard </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            background: rgb(202, 185, 185);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            position: absolute;
+            height: 100vh;
+            background: rgb(248, 248, 248);
+            width: 90px;
+            left: 0;
+            box-shadow: 3px 3px 20px 5px rgb(187, 187, 187);
+            z-index: 777777;
+        }
+
+
+
+        li {
+            list-style: none;
+            height: 70px;
+            width: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(248, 248, 248);
+        }
+
+        li:hover {
+            background-color: rgb(187, 224, 255);
+            border-left: 3px solid rgb(20, 142, 241);
+        }
+
+        li:hover a i {
+            color: rgb(114, 114, 114);
+        }
+
+        li:hover a span {
+            color: rgb(114, 114, 114);
+        }
+
+        li:first-child:hover {
+            border-left: none;
+        }
+
+        li:first-child {
+            height: 90px;
+            background-color: #ffffff;
+            border-bottom: 1px solid rgb(221, 221, 221);
+        }
+
+        li:first-child a i {
+            font-size: 40px !important;
+            color: rgb(114, 114, 114);
+        }
+
+        li a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        li a i {
+            font-size: 25px !important;
+            color: rgb(195, 195, 195);
+        }
+
+        li a span {
+            color: rgb(195, 195, 195);
+        }
+
+        .container {
+            position: absolute;
+            height: 100vh;
+            left: 90px;
+            top: 0;
+            background: rgb(245, 245, 245);
+            width: calc(100% - 90px);
+        }
+
+        .navigation {
+            position: absolute;
+            height: 100px;
+            background: rgb(255, 255, 255);
+            width: 100%;
+        }
+
+        .content {
+            padding: 30px;
+            position: absolute;
+            top: 100px;
+            width: 100%;
+        }
+
+        .videos_arrow {
+            font-weight: bolder;
+            color: gray;
+        }
+
+        form {
+            margin: 0px 10%;
+        }
+
+        input[type="text"] {
+            margin: 10px 0px;
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            color: gray;
+            border: none;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgb(95, 95, 95);
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .or_content {
+            text-align: center;
+            font-weight: bolder;
+            color: rgb(70, 70, 70);
+        }
+
+        input[type="file"] {
+            width: 150px;
+            height: 150px;
+            font-size: 17px;
+            color: gray;
+            border: none;
+            background: #fff;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        input[type="file"]::before {
+            content: "upload";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: rgb(255, 255, 255);
+            z-index: 1;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+
+        <!-- its for sidebar navigation  -->
+        <div class="sidebar">
+
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-500px"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user"></i>
+                        <span>Student</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-id-badge"></i>
+                        <span>Lesson</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="container">
+
+            <!-- its for navigation part  -->
+            <div class="navigation"></div>
+
+            <!-- its part for content section  -->
+            <div class="content">
+                <span class="videos_arrow"><i class="fa fa-caret-left"></i>&nbsp;Videos</span> <br> <br>
+
+                <form action="#">
+                    <input type="text" placeholder="Insert URL here"> <br> <br>
+                    <p class="or_content">or</p> <br>
+
+                    <input type="file" placeholder="upload">
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
