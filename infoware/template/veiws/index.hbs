@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <title>Infoware {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                     {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{ message}}</p>
+                    </div>
+                        {{/if}}
+
+
+                    <!-- navigation -->
+                    {{>navbar}}
+
+                </header>
+
+                <div class="baner">
+                    <h2 class="main_heading">Shopping Here</h2>
+                    <div class="items">
+
+
+                        <div class="item">
+
+                            <div class="item_img">
+                                <img src="image/img.png" alt="image">
+                            </div>
+
+                            <div class="des">
+                                <p>Lorem ipsum doat mollitia m doat mollit a df af dsafsadipsum doat mollitia ndsfa df
+                                    af dsafsadipsum doat mollitia ndsfa df af dsafsadf adsf am quos exercitationem.</p>
+                            </div>
+
+                            <div class="footer">
+                                <div class="rate">
+                                    <p>$<span>15</span> USD</p>
+                                </div>
+                                <div class="add">
+                                    <input type="checkbox" name="card" id="card">
+                                    <label for="card">add</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="item">
+
+                            <div class="item_img">
+                                <img src="image/logo.png" alt="image">
+                            </div>
+
+                            <div class="des">
+                                <p>Lorem ipsum doat mollitia nam quos exercitationem.</p>
+                            </div>
+
+                            <div class="footer">
+                                <div class="rate">
+                                    <p>$<span>15</span> USD</p>
+                                </div>
+                                <div class="add">
+                                    <input type="checkbox" name="card" id="card">
+                                    <label for="card">add</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="item">
+
+                            <div class="item_img">
+                                <img src="image/kamleen.jpg" alt="image">
+                            </div>
+
+                            <div class="des">
+                                <p>Lorem ipsum doat mollitia nam quos exercitationem.</p>
+                            </div>
+
+                            <div class="footer">
+                                <div class="rate">
+                                    <p>$<span>15</span> USD</p>
+                                </div>
+                                <div class="add">
+                                    <input type="checkbox" name="card" id="card">
+                                    <label for="card">add</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="item insert_item"><a href="#">+</a></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    {{>footer}} 

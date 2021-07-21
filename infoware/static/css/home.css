@@ -1,4 +1,4 @@
-h2{
+.main_heading{
     color: rgb(88, 88, 88);
     margin: 10px;
 } 
@@ -26,6 +26,7 @@ h2{
     margin: 10px; 
     position: relative;  
     padding: 7px; 
+    overflow: hidden;
 }
 
 .item:hover .item_img img{
@@ -63,10 +64,11 @@ h2{
     display: flex; 
     align-items: center;   
     justify-content: space-between;
-    position: absolute; 
-    /* margin: 20px 0; */
+    position: absolute;  
     position: absolute;
     bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.705);
 }
  
 .footer .add{
@@ -76,16 +78,9 @@ h2{
  
 .footer .rate p{ 
     font-weight: bold;
+    margin-left: 10px;
 }
- 
-
-
-
-
-
-
-
-
+  
 
 .insert_item a{
     display: flex;

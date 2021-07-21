@@ -4,15 +4,20 @@
   "description": "It's for ecommers web",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js -e js,hbs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.io/mohdkamleen/job/infoware"
+    "url": "https://github.com/mohdkamleen/job/tree/main/infoware"
   },
   "keywords": [
     "ecommers",
