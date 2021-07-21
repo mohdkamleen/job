@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-     <title>Infoware {{title}}</title>
+    <title>Infoware {{title}}</title>
     {{>header}}
     <!-- include css files -->
     <link rel="stylesheet" href="/css/style.css">
@@ -16,16 +16,44 @@
                 <header>
 
 
-                     {{#if message}}
+                    {{#if message}}
                     <div id="msg">
                         <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
                         <p>{{ message}}</p>
                     </div>
-                        {{/if}}
+                    {{/if}}
 
 
                     <!-- navigation -->
-                    {{>navbar}}
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Info<span>Ware</span><code>{{#if user}}{{user}}{{/if}}</code></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+
+                                    {{#if user}}
+                                    <li><a class="active" href="/"> Shop </a></li>
+                                    <li><a href="#">cart</a></li>
+                                    <li><a href="#">checkout</a></li>
+                                    <li><a href="/logout">logout</a></li>  
+                                    {{/if}}
+                                    {{#else}}
+                                    <li><a class="active" href="/"> Shop </a></li>
+                                    <li><a href="/login"> Login </a></li>
+                                    <li><a href="/signin"> signin </a></li>
+                                    {{/else}}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
 
                 </header>
 
@@ -117,4 +145,8 @@
     </div>
 
 
-    {{>footer}} 
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>

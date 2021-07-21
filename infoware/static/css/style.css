@@ -22,6 +22,8 @@ body{
     position: fixed;
     top: 0;right: 0;
     z-index: 12;
+    max-width: 350px;
+    width: 100%;  
 }
 
 
@@ -33,7 +35,9 @@ body{
 }
 
 #msg p{  
-    margin: 50px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
     color: #fff;
     background: rgb(92, 92, 92); 
     padding: 5px 15px;
@@ -41,7 +45,6 @@ body{
     font-size: 20px;
     border-radius: 10px;
     border-top-right-radius: 0px;
-    max-width: 300px;
 }
 
 

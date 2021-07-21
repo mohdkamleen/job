@@ -4,6 +4,7 @@
   "description": "It's for ecommers web",
   "main": "index.js",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "hbs": "^4.1.2",
@@ -13,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js -e js,hbs"
+    "start": "nodemon index.js -e js,hbs,env"
   },
   "repository": {
     "type": "git",
