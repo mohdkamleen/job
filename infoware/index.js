@@ -68,29 +68,29 @@ app.get('/', function (request, response) {
 	} else {
 		response.render("index", { 
 			title: "| Dashboard",  
-			user: request.session.username
-		}) 
+			user: ""
+		})
 	}   
 })
 
 app.get('/login', function (req, res) {
 	res.render("login", {
 		title: "| Login",
-		message: "Defult Message of LogIn"
+		message: ""
 	})
 })
 
 app.get('/signup', function (req, res) {
 	res.render("signup", {
 		title: "| Signup",
-		message: "Defult Message of SignUp"
+		message: ""
 	})
 })
 
 app.get('/forgot', function (req, res) {
 	res.render("forgot", {
 		title: "| Forgot",
-		message: "Defult Message of forgot"
+		message: ""
 	})
 })
 
@@ -146,6 +146,12 @@ app.get('/logout', function (req, res) {
 	res.redirect("/") 
 })
  
+app.post('/forgot', function (req, res) {
+	res.render("forgot", {
+		title: "| Forgot",
+		message: "This Proccess can not be added"
+	})
+})
 
 
  

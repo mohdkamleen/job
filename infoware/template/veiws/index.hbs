@@ -32,7 +32,7 @@
                         <nav>
                             <!-- logo -->
                             <div class="logo">
-                                <h1>Info<span>Ware</span><code>{{#if user}}{{user}}{{/if}}</code></h1>
+                                <h1>Info<span>Ware </span><code>{{#if user}}{{user}}{{/if}}</code></h1>
                             </div>
 
                             <!-- menu  -->
@@ -43,13 +43,12 @@
                                     <li><a class="active" href="/"> Shop </a></li>
                                     <li><a href="#">cart</a></li>
                                     <li><a href="#">checkout</a></li>
-                                    <li><a href="/logout">logout</a></li>  
-                                    {{/if}}
-                                    {{#else}}
+                                    <li><a href="/logout">logout</a></li>
+                                    {{else}}  
                                     <li><a class="active" href="/"> Shop </a></li>
                                     <li><a href="/login"> Login </a></li>
-                                    <li><a href="/signin"> signin </a></li>
-                                    {{/else}}
+                                    <li><a href="/signup"> signup </a></li>  
+                                    {{/if}}
                                 </ul>
                             </div>
                         </nav>
