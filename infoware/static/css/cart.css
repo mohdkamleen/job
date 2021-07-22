@@ -1,0 +1,93 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+} 
+
+.baner{
+    position: absolute;
+    top: 50px; 
+    margin: 20px 5% ; 
+    height: 100%;  
+}
+
+.items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.item{ 
+    height: 250px;
+    width: 180px;
+    border: 1px solid rgb(168, 168, 168);
+    margin: 10px; 
+    position: relative;  
+    padding: 7px; 
+    overflow: hidden;
+}
+
+.item:hover .item_img img{
+    opacity: .1;
+    z-index: -5;
+}
+
+.item:hover .des{
+    opacity: 1;
+    z-index: -5;
+}
+
+.item .des { 
+    position: absolute;
+    top: 0; 
+    display: flex; 
+    align-items: center;   
+    justify-content: center; 
+    color: rgb(94, 94, 94);
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    z-index: -2;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+ .item_img img{ 
+    width: 100%; 
+    transition: all .3s linear;
+}
+
+.footer{ 
+    width: 100%;
+    display: flex; 
+    align-items: center;   
+    justify-content: space-between;
+    position: absolute;  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.705);
+}
+ 
+.footer .add{
+    margin: 15px;
+}
+ 
+ 
+.footer .rate p{ 
+    font-weight: bold;
+    margin-left: 10px;
+}
+  
+
+.insert_item a{
+    display: flex;
+    justify-content: center; 
+    line-height: 130px; 
+    font-size: 60px;
+    font-weight: bolder;
+    color: rgb(206, 206, 206); 
+}
+ 
