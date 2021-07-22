@@ -124,3 +124,24 @@
     color: rgb(206, 206, 206); 
 }
  
+.auth-user {   
+     width: 100%; 
+    overflow: auto;
+    padding: 20px;
+    text-align: center; 
+    overflow: hidden;
+}
+
+table{
+    width: 100%; 
+}
+ table td {
+     padding: 5px 10px;
+
+ }
+table th{
+     padding: 5px 10px;
+     background: rgb(109, 108, 108);
+     color: #fff;
+
+ }

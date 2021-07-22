@@ -1,16 +1,18 @@
 const express = require("express")
 var session = require("express-session")
-var mysql = require('mysql'); 
+var mysql = require('mysql');
 const path = require("path");
 const dotenv = require("dotenv");
 var hbs = require("hbs");
+var fileUpload = require('express-fileupload');
 const { urlencoded } = require('express');
 const { request } = require("http");
+// const { request } = require("http");
 
- 
+
 // genral application setting  
 
-var app = express() 
+var app = express()
 const PORT = process.env.PORT || 3000;
 const static_path = path.join(__dirname + "/static")
 const template_path = path.join(__dirname + "/template/veiws")
@@ -19,18 +21,19 @@ const partials_path = path.join(__dirname + "/template/partials")
 dotenv.config({
 	path: './.env'
 })
-app.use(session({secret: 'Mohd Kamleen',saveUninitialized: true,resave: true}));
+app.use(session({ secret: 'Mohd Kamleen', saveUninitialized: true, resave: true }));
 app.use(urlencoded({ extended: false }))
 app.use(express.static(static_path));
-app.set("view engine", "hbs") 
+app.set("view engine", "hbs")
+app.use(fileUpload());
 app.set("views", template_path)
 hbs.registerPartials(partials_path)
 
- 
+
 
 // database connection process 
 
-var conn = mysql.createConnection({ 
+var conn = mysql.createConnection({
 	host: process.env.HOST,
 	user: process.env.USER,
 	password: process.env.PASSWORD
@@ -45,7 +48,7 @@ conn.query(sql, (err, res) => {
 	console.log("(infoware) database created")
 })
 // use authentication database  
-var sql = "use infoware" 
+var sql = "use infoware"
 conn.query(sql, (err, res) => {
 	console.log("use (infoware) database")
 })
@@ -53,80 +56,81 @@ conn.query(sql, (err, res) => {
 var sql = "CREATE TABLE if not exists auth (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), username VARCHAR(255), password VARCHAR(255))";
 conn.query(sql, (err, res) => {
 	console.log("(auth) table created")
-}) 
+})
 // create table for items 
 var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), description VARCHAR(255), rate VARCHAR(255), itemadd VARCHAR(255))";
 conn.query(sql, (err, res) => {
-	console.log("(items) table created") 
-}) 
+	console.log("(items) table created")
+})
 
- 
- 
+
+
 // get and post urls     
 
-app.get('/', function (request, response) { 
+app.get('/', function (request, response) {
 
 
-	if (request.session.loggedin) {  
+	if (request.session.loggedin) {
 		conn.query('SELECT * FROM `items`', function (error, results, fields) {
-			if (results.length > 0) {  
+			if (results.length > 0) {
 				response.render("index", {
-					title: "| Dashboard", 
-					data: results, 
+					title: "| Dashboard",
+					data: results,
 					user: request.session.username
-				}) 
+				})
 			} else {
 				response.render("index", {
 					title: "| Dashboard",
-					message: "Not avilable items"  
-				}) 
+					message: "Not avilable items"
+				})
 			}
-		}) 
-	
-} else { 
+		})
 
-	conn.query('SELECT * FROM `items`', function (error, results, fields) {
-		if (results.length > 0) {  
-			response.render("index", {
-				title: "| Dashboard", 
-				data: results 
-			}) 
-		} else {
-			response.render("index", {
-				title: "| Dashboard",
-				message: "Not avilable items"  
-			}) 
-		} 
-	})
-}
+	} else {
 
-}) 
-
-app.get('/admin', function (req, res) { 
-
-	if (req.session.adminlog) {  
 		conn.query('SELECT * FROM `items`', function (error, results, fields) {
-			if (results.length > 0) {  
-				res.render("index", {
-					title: "| Admin", 
-					data: results, 
-					user: req.session.admin
-				}) 
+			if (results.length > 0) {
+				response.render("index", {
+					title: "| Dashboard",
+					data: results
+				})
 			} else {
-				res.render("login", { 
-					message: "Not avilable admin"  
-				}) 
+				response.render("index", {
+					title: "| Dashboard",
+					message: "Not avilable items"
+				})
 			}
-		})  
-	}  
+		})
+	}
+
+})
+
+app.get('/admin', function (req, res) {
+
+	if (req.session.loggedin) {
+		
+			conn.query('SELECT * FROM `auth`', function (error, auth, fields) {
+				conn.query('SELECT * FROM `items`', function (error, data, fields) {
+					res.render("admin", {
+						title: "| Admin",
+						data: data,
+						auth:auth,
+						user: req.session.username
+					}) 
+			})
+		})
+
+	} else {
+		res.redirect("/login")
+	}
 })
 
 app.get('/login', function (req, res) {
- 
-			res.render("login", {
-				title: "| Login",
-				message: "" 
-			}) 
+
+	res.render("login", {
+		title: "| Login",
+		message: ""
+	})
 })
 
 app.get('/signup', function (req, res) {
@@ -134,106 +138,119 @@ app.get('/signup', function (req, res) {
 		title: "| Signup",
 		message: ""
 	})
-})  
+})
 
 app.get('/forgot', function (req, res) {
-	res.render("forgot", { 
+	res.render("forgot", {
 		title: "| Forgot",
 		message: ""
 	})
 })
 
-app.post('/login', function (request, response) {   
-	response.setHeader(200,{'Content-Type': 'text/html'});
-	var username = request.body.username; 
-	var password = request.body.password; 
- 
-	if (username && password) {  
+app.get('/itemdelete/:id', function (req, res) {
+	conn.query('DELETE FROM `items` WHERE id = ?', [req.params.id], function (error, results, fields) {
+		res.redirect("/admin")
+	})
+})
 
+app.post('/login', function (request, response) {
+	var username = request.body.username;
+	var password = request.body.password;
 
-	if(username == "admin" && password == "1234"){ 
-		response.redirect("/admin"); 
-		request.session.admin = "admin" 
-		request.session.adminlog = true
-		response.end();
-	}
+	if (username && password) {
+
+		// if(username == "admin" && password == "1234"){ 
+		// 	response.redirect("/admin"); 
+		// 	request.session.admin = "admin" 
+		// 	request.session.adminlog = true
+		// 	response.end();
+		// }
 
 		conn.query('SELECT * FROM `auth` WHERE username = ? and password = ?', [username, password], function (error, results, fields) {
-			if (results.length > 0) {  
-				request.session.loggedin = true;  
-				request.session.username = request.body.username;   
+			if (results.length > 0) {
+				request.session.loggedin = true;
+				request.session.username = request.body.username;
 				response.redirect('/');
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}
 			response.end();
 		});
-	} else {  
-		response.send('Please enter Username and Password!'); 
+	} else {
+		response.send('Please enter Username and Password!');
 		response.end();
 	}
 });
 
 app.post('/signup', function (request, response) {
-  
+
 	var name = request.body.name;
 	var username = request.body.username;
-	var password = request.body.password; 
- 
+	var password = request.body.password;
+
 	if (name && username && password) {
 		conn.query('SELECT * FROM `auth` WHERE username = ?', [username], function (error, results, fields) {
-			if (results.length > 0) { 
+			if (results.length > 0) {
 				response.send('UserName alredy exist');
 			} else {
-				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function(err, res){
-					if (err) throw err; 
-					console.log('user created');     
-					
+				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function (err, res) {
+					if (err) throw err;
+					console.log('user created');
+
 					// response.render("index")
 					// alert("Register Success")
-				}) 
+				})
 			}
 			response.end();
-		});  
-	} else { 
+		});
+	} else {
 		response.send('Please enter name, username and Password!');
 		response.end();
 	}
- 
-});  
+
+});
 
 
 app.get('/logout', function (req, res) {
-	req.session.loggedin=false;  
+	req.session.loggedin = false;
 	req.session.adminlog = false;
-	res.redirect("/login") 
+	res.redirect("/")
 })
 
-app.get('/insert', function (req, res) { 
+app.get('/insert', function (req, res) {
 	res.render("insert", {
 		title: "| Insert"
 	})
 })
 
 app.post('/insert', function (request, response) {
-  
-	var image = request.body.image;
+
+	var file = request.files.uploaded_image;
 	var description = request.body.description;
-	var rate = request.body.rate; 
-	var itemadd = true; 
- 
-	if (image && description && rate) {
-		conn.query('INSERT INTO `items`(`image`, `description`, `rate`, `itemadd`) VALUES (?,?,?,?)', [image,description,rate,itemadd], function (err, red, fields) {
-			if (err) throw err;  
-			response.redirect("/admin")
+	var rate = request.body.rate;
+	var itemadd = true;
+
+
+
+
+	if (file && description && rate) {
+
+		file.mv('static/image/' + file.name, function (err) {
+			conn.query('INSERT INTO `items`(`image`, `description`, `rate`, `itemadd`) VALUES (?,?,?,?)', ['/image/' + file.name, description, rate, itemadd], function (err, red, fields) {
+				if (err) throw err;
+				response.redirect("/admin")
+			})
 		})
-	} else { 
+
+
+
+	} else {
 		response.send('Please enter all feilds');
 		response.end();
 	}
- 
-});  
- 
+
+});
+
 app.post('/forgot', function (req, res) {
 	res.render("forgot", {
 		title: "| Forgot",
@@ -242,7 +259,7 @@ app.post('/forgot', function (req, res) {
 })
 
 
- 
+
 
 //  application run code here 
 
@@ -253,4 +270,4 @@ app.listen(PORT, function (req, res) {
 
 
 
- 
+

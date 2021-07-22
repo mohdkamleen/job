@@ -49,12 +49,12 @@
 
                 <div class="baner">
                     <h2 class="main_heading">Insert Items Here</h2>
-                    <form action="/insert" method="POST">
+                    <form action="/insert" method="POST" enctype="multipart/form-data">
                         <div>
 
                              <div class="password_feild">
                                 <label for="image">Item Image</label><br>
-                                <input type="file" name="image" id="image"> <br>
+                                <input type="file" name="uploaded_image" id="image" accept="image/*"> <br>
                             </div>
 
 

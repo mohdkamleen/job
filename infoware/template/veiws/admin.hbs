@@ -37,11 +37,11 @@
 
                             <!-- menu  -->
                             <div class="nav" id="nav">
-                                <ul> 
-                                    <li><a class="active" href="/"> Shop </a></li>
+                                <ul>
+                                    <li><a href="/"> Shop </a></li>
                                     <li><a href="#">cart</a></li>
-                                    <li><a href="#">checkout</a></li>
-                                    <li><a href="/logout">logout</a></li> 
+                                    <li><a class="active" href="/admin">admin</a></li>
+                                    <li><a href="/logout">logout</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -61,9 +61,9 @@
 
                         {{#if data}}
                         {{#each data}}
-                         
 
-                        <div class="item"> 
+
+                        <div class="item">
 
                             <div class="item_img">
                                 <img src="{{this.image}}" alt="{{this.image}}">
@@ -83,13 +83,40 @@
                             </div>
 
                         </div>
-                        
+
                         {{/each}}
                         {{/if}}
 
 
                         <div class="item insert_item"><a href="/insert">+</a></div>
-                    </div>
+                    </div> <br><br>
+
+                    <h2 class="main_heading">Auth User Details</h2>
+                    
+                    <div class="auth-user">
+                        <table cellspacing="0" border="1">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Actions</th>
+                        </tr>
+
+
+                        {{#if auth}}
+                        {{#each auth}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.username}}</td>
+                            <td>{{this.password}}</td>
+                            <td><button>delete</button></td>
+                        </tr>
+                        {{/each}}
+                        {{/if}}
+                    </table>
+                    </div> <br><br><br>
 
                 </div>
 
