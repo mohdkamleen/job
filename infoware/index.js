@@ -10,7 +10,7 @@ const { request } = require("http");
  
 // genral application setting  
 
-var app = express()
+var app = express() 
 const PORT = process.env.PORT || 3000;
 const static_path = path.join(__dirname + "/static")
 const template_path = path.join(__dirname + "/template/veiws")
@@ -54,30 +54,79 @@ var sql = "CREATE TABLE if not exists auth (id INT AUTO_INCREMENT PRIMARY KEY, n
 conn.query(sql, (err, res) => {
 	console.log("(auth) table created")
 }) 
+// create table for items 
+var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), description VARCHAR(255), rate VARCHAR(255), itemadd VARCHAR(255))";
+conn.query(sql, (err, res) => {
+	console.log("(items) table created") 
+}) 
 
-
+ 
  
 // get and post urls     
 
 app.get('/', function (request, response) { 
-	if (request.session.loggedin) {
-		response.render("index", { 
-			title: "| Dashboard",  
-			user: request.session.username
-		})
-	} else {
-		response.render("index", { 
-			title: "| Dashboard",  
-			user: ""
-		})
-	}   
+
+
+	if (request.session.loggedin) {  
+		conn.query('SELECT * FROM `items`', function (error, results, fields) {
+			if (results.length > 0) {  
+				response.render("index", {
+					title: "| Dashboard", 
+					data: results, 
+					user: request.session.username
+				}) 
+			} else {
+				response.render("index", {
+					title: "| Dashboard",
+					message: "Not avilable items"  
+				}) 
+			}
+		}) 
+	
+} else { 
+
+	conn.query('SELECT * FROM `items`', function (error, results, fields) {
+		if (results.length > 0) {  
+			response.render("index", {
+				title: "| Dashboard", 
+				data: results 
+			}) 
+		} else {
+			response.render("index", {
+				title: "| Dashboard",
+				message: "Not avilable items"  
+			}) 
+		} 
+	})
+}
+
+}) 
+
+app.get('/admin', function (req, res) { 
+
+	if (req.session.adminlog) {  
+		conn.query('SELECT * FROM `items`', function (error, results, fields) {
+			if (results.length > 0) {  
+				res.render("index", {
+					title: "| Admin", 
+					data: results, 
+					user: req.session.admin
+				}) 
+			} else {
+				res.render("login", { 
+					message: "Not avilable admin"  
+				}) 
+			}
+		})  
+	}  
 })
 
 app.get('/login', function (req, res) {
-	res.render("login", {
-		title: "| Login",
-		message: ""
-	})
+ 
+			res.render("login", {
+				title: "| Login",
+				message: "" 
+			}) 
 })
 
 app.get('/signup', function (req, res) {
@@ -85,31 +134,42 @@ app.get('/signup', function (req, res) {
 		title: "| Signup",
 		message: ""
 	})
-})
+})  
 
 app.get('/forgot', function (req, res) {
-	res.render("forgot", {
+	res.render("forgot", { 
 		title: "| Forgot",
 		message: ""
 	})
 })
 
-app.post('/login', function (request, response) {
-	var username = request.body.username;
-	var password = request.body.password;
-	if (username && password) {
+app.post('/login', function (request, response) {   
+	response.setHeader(200,{'Content-Type': 'text/html'});
+	var username = request.body.username; 
+	var password = request.body.password; 
+ 
+	if (username && password) {  
+
+
+	if(username == "admin" && password == "1234"){ 
+		response.redirect("/admin"); 
+		request.session.admin = "admin" 
+		request.session.adminlog = true
+		response.end();
+	}
+
 		conn.query('SELECT * FROM `auth` WHERE username = ? and password = ?', [username, password], function (error, results, fields) {
-			if (results.length > 0) { 
+			if (results.length > 0) {  
 				request.session.loggedin = true;  
-				request.session.username = request.body.username;  
+				request.session.username = request.body.username;   
 				response.redirect('/');
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}
 			response.end();
 		});
-	} else { 
-		response.send('Please enter Username and Password!');
+	} else {  
+		response.send('Please enter Username and Password!'); 
 		response.end();
 	}
 });
@@ -128,7 +188,9 @@ app.post('/signup', function (request, response) {
 				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function(err, res){
 					if (err) throw err; 
 					console.log('user created');     
+					
 					// response.render("index")
+					// alert("Register Success")
 				}) 
 			}
 			response.end();
@@ -143,8 +205,34 @@ app.post('/signup', function (request, response) {
 
 app.get('/logout', function (req, res) {
 	req.session.loggedin=false;  
-	res.redirect("/") 
+	req.session.adminlog = false;
+	res.redirect("/login") 
 })
+
+app.get('/insert', function (req, res) { 
+	res.render("insert", {
+		title: "| Insert"
+	})
+})
+
+app.post('/insert', function (request, response) {
+  
+	var image = request.body.image;
+	var description = request.body.description;
+	var rate = request.body.rate; 
+	var itemadd = true; 
+ 
+	if (image && description && rate) {
+		conn.query('INSERT INTO `items`(`image`, `description`, `rate`, `itemadd`) VALUES (?,?,?,?)', [image,description,rate,itemadd], function (err, red, fields) {
+			if (err) throw err;  
+			response.redirect("/admin")
+		})
+	} else { 
+		response.send('Please enter all feilds');
+		response.end();
+	}
+ 
+});  
  
 app.post('/forgot', function (req, res) {
 	res.render("forgot", {

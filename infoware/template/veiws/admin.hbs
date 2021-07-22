@@ -6,7 +6,7 @@
     {{>header}}
     <!-- include css files -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 
 <body>
@@ -37,18 +37,11 @@
 
                             <!-- menu  -->
                             <div class="nav" id="nav">
-                                <ul>
-
-                                    {{#if user}}
+                                <ul> 
                                     <li><a class="active" href="/"> Shop </a></li>
                                     <li><a href="#">cart</a></li>
                                     <li><a href="#">checkout</a></li>
-                                    <li><a href="/logout">logout</a></li>
-                                    {{else}}  
-                                    <li><a class="active" href="/"> Shop </a></li>
-                                    <li><a href="/login"> Login </a></li>
-                                    <li><a href="/signup"> signup </a></li>  
-                                    {{/if}}
+                                    <li><a href="/logout">logout</a></li> 
                                 </ul>
                             </div>
                         </nav>
@@ -57,12 +50,14 @@
                 </header>
 
                 <div class="baner">
-                    <h2 class="main_heading">Shopping Here</h2>
+                    <h2 class="main_heading">Shopping Items Details</h2>
                     <div class="items">
 
 
-                       
- 
+
+
+
+
 
                         {{#if data}}
                         {{#each data}}
@@ -82,9 +77,8 @@
                                 <div class="rate">
                                     <p>$<span>{{this.rate}}</span> USD </p>
                                 </div>
-                                 <div class="add">
-                                    <input type="checkbox" name="card" id="card">
-                                    <label for="card">add</label>
+                                <div class="add">
+                                    <button><a href="/itemdelete/{{this.id}}">Delete</a></button>
                                 </div>
                             </div>
 
@@ -93,7 +87,8 @@
                         {{/each}}
                         {{/if}}
 
- 
+
+                        <div class="item insert_item"><a href="/insert">+</a></div>
                     </div>
 
                 </div>
