@@ -48,7 +48,12 @@ body{
 }
 
 
-
+.copyright{ 
+    width: 100%;
+    padding:  30px 50px; 
+    text-align: center;
+    font-size: 20px;
+}
 
 
 

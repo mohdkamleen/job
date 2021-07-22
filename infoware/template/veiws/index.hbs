@@ -44,10 +44,10 @@
                                     <li><a href="#">cart</a></li>
                                     <li><a href="/admin">admin</a></li>
                                     <li><a href="/logout">logout</a></li>
-                                    {{else}}  
+                                    {{else}}
                                     <li><a class="active" href="/"> Shop </a></li>
                                     <li><a href="/login"> Login </a></li>
-                                    <li><a href="/signup"> signup </a></li>  
+                                    <li><a href="/signup"> signup </a></li>
                                     {{/if}}
                                 </ul>
                             </div>
@@ -61,14 +61,14 @@
                     <div class="items">
 
 
-                       
- 
+
+
 
                         {{#if data}}
                         {{#each data}}
-                         
 
-                        <div class="item"> 
+
+                        <div class="item">
 
                             <div class="item_img">
                                 <img src="{{this.image}}" alt="{{this.image}}">
@@ -82,25 +82,30 @@
                                 <div class="rate">
                                     <p>$<span>{{this.rate}}</span> USD </p>
                                 </div>
-                                 <div class="add">
+                                <div class="add">
                                     <input type="checkbox" name="card" id="card">
                                     <label for="card">add</label>
                                 </div>
                             </div>
 
                         </div>
-                        
+
                         {{/each}}
                         {{/if}}
 
- 
-                    </div>
 
+                    </div>
+                    <div class="copyright">Copyright &copy; kamleen
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
                 </div>
 
 
             </div>
         </div>
+
+
+
     </div>
 
 

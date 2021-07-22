@@ -92,32 +92,39 @@
                     </div> <br><br>
 
                     <h2 class="main_heading">Auth User Details</h2>
-                    
+
                     <div class="auth-user">
                         <table cellspacing="0" border="1">
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th colspan="2">Actions</th>
+                            </tr>
 
 
-                        {{#if auth}}
-                        {{#each auth}}
-                        <tr>
-                            <td>{{this.id}}</td>
-                            <td>{{this.name}}</td>
-                            <td>{{this.username}}</td>
-                            <td>{{this.password}}</td>
-                            <td><button>delete</button></td>
-                        </tr>
-                        {{/each}}
-                        {{/if}}
-                    </table>
-                    </div> <br><br><br>
-
+                            {{#if auth}}
+                            {{#each auth}}
+                            <tr>
+                                <form action="/userupdate" method="POST">
+                                    <td><input value="{{this.id}}" name="id" class="id" readonly="true"></td>
+                                    <td><input value="{{this.name}}" name="name" autofocus="true"></td>
+                                    <td><input value="{{this.username}}" name="username"></td>
+                                    <td><input value="{{this.password}}" name="password"></td>
+                                    <td>
+                                        <button><a href="/userdelete/{{this.id}}">delete</a></button>
+                                        <button type="submit">update</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </table>
+                    </div>
+                    <div class="copyright">Copyright &copy; kamleen
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
                 </div>
 
 
