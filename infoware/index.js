@@ -194,10 +194,10 @@ app.post('/signup', function (request, response) {
 			} else {
 				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function (err, res) {
 					if (err) throw err;
-					console.log('user created');
+					console.log(name, 'is created');
 
-					// response.render("index")
-					// alert("Register Success")
+					// not work this code 
+					// response.redirect("/login")
 				})
 			}
 			response.end();
@@ -215,12 +215,27 @@ app.get('/logout', function (req, res) {
 	req.session.adminlog = false;
 	res.redirect("/")
 })
+ 
 
 app.get('/insert', function (req, res) {
 
 	if (req.session.loggedin) {
 		res.render("insert", {
-			title: "| Insert", 
+			title: "| Insert",
+			user: req.session.username
+		})
+
+	} else {
+		res.redirect("/")
+	}
+
+})
+
+app.get('/cart', function (req, res) {
+
+	if (req.session.loggedin) {
+		res.render("cart", {
+			title: "| Cart",
 			user: req.session.username
 		})
 
@@ -235,15 +250,15 @@ app.post('/insert', function (request, response) {
 	var file = request.files.uploaded_image;
 	var description = request.body.description;
 	var rate = request.body.rate;
-	var itemadd = true; 
+	var itemadd = true;
 
-	if (file && description && rate) { 
+	if (file && description && rate) {
 		file.mv('static/image/' + file.name, function (err) {
 			conn.query('INSERT INTO `items`(`image`, `description`, `rate`, `itemadd`) VALUES (?,?,?,?)', ['/image/' + file.name, description, rate, itemadd], function (err, red, fields) {
 				if (err) throw err;
 				response.redirect("/admin")
 			})
-		}) 
+		})
 
 
 	} else {
@@ -255,17 +270,17 @@ app.post('/insert', function (request, response) {
 
 
 app.post('/userupdate', function (request, response) {
- 
 
-	var id = request.body.id; 
-	var name = request.body.name; 
+
+	var id = request.body.id;
+	var name = request.body.name;
 	var username = request.body.username;
-	var password = request.body.password; 
- 
-		conn.query('UPDATE auth SET name=?,username=?,password=? WHERE id=?', [name,username,password,id], function (error, results, fields) {  
-			if (error) throw error; 
-			response.redirect("/admin")   
-		}); 
+	var password = request.body.password;
+
+	conn.query('UPDATE auth SET name=?,username=?,password=? WHERE id=?', [name, username, password, id], function (error, results, fields) {
+		if (error) throw error;
+		response.redirect("/admin")
+	});
 });
 
 

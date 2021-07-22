@@ -4,8 +4,7 @@
 <head>
     <title>Infoware {{title}}</title>
     {{>header}}
-    <!-- include css files -->
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- include css files --> 
     <link rel="stylesheet" href="/css/home.css">
 </head>
 
@@ -38,17 +37,11 @@
                             <!-- menu  -->
                             <div class="nav" id="nav">
                                 <ul>
-
-                                    {{#if user}}
-                                    <li><a class="active" href="/"> Shop </a></li>
-                                    <li><a href="/cart">cart</a></li>
+ 
+                                    <li><a href="/"> Shop </a></li>
+                                    <li><a class="active" href="/cart">cart</a></li>
                                     <li><a href="/admin">admin</a></li>
-                                    <li><a href="/logout">logout</a></li>
-                                    {{else}}
-                                    <li><a class="active" href="/"> Shop </a></li>
-                                    <li><a href="/login"> Login </a></li>
-                                    <li><a href="/signup"> signup </a></li>
-                                    {{/if}}
+                                    <li><a href="/logout">logout</a></li> 
                                 </ul>
                             </div>
                         </nav>
@@ -57,7 +50,7 @@
                 </header>
 
                 <div class="baner">
-                    <h2 class="main_heading">Shopping Here</h2>
+                    <h2 class="main_heading">Shopping Cart Here</h2>
                     <div class="items">
 
 
