@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Toggle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh; 
+        }
+
+        select {
+            font-size: 20px;
+            padding: 5px 15px;
+            border: 2px solid rgb(173, 173, 173);
+            color: gray;
+            background: rgb(255, 247, 247);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 5px 15px;
+            margin: 10px;
+            border: 2px solid rgb(173, 173, 173);
+            color: rgb(167, 167, 167);
+            background: rgb(255, 247, 247);
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: all .3s ease;
+        }
+
+        button:hover,
+        select:hover {
+            background-color: transparent;
+        }
+        iframe{
+            position: fixed;
+            top: 0;left: 0;
+            height: 100vh;
+            width: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body onload="loadFun()"> 
+    <div>
+        <select id="time" onchange="startWithTime(this.value)">
+            <option value="0">With Time</option> 
+            <option value="10000">10 Second</option>
+            <option value="300000">5 Minute</option>
+            <option value="600000">10 Minute</option>
+            <option value="1800000">30 Minute</option>
+            <option value="3600000">1 Hour</option>
+        </select>
+    </div>
+    <div>
+        <button value="1" onclick="fun(this.value)">On</button>
+        <button value="0" id="motor" onclick="fun(this.value)">Off</button>
+    </div>
+    <script>
+
+        function fun(val) {
+            var fconfig = {
+                apiKey: "AIzaSyDc5timuQtu7Y4ZxFHafV-NTwT4sU29u8w",
+                authDomain: "kdt-143.firebaseapp.com",
+                databaseURL: "https://kdt-143-default-rtdb.firebaseio.com",
+                projectId: "kdt-143",
+                storageBucket: "kdt-143.appspot.com",
+                messagingSenderId: "559265165592"
+            };
+            firebase.initializeApp(fconfig);
+            firebase.database().ref('motor').set({ "motor": val }).then(() => {
+                window.location.href = '/';
+            });
+        }
+
+
+
+        function startWithTime(val) {
+            var fconfig = {
+                apiKey: "AIzaSyDc5timuQtu7Y4ZxFHafV-NTwT4sU29u8w",
+                authDomain: "kdt-143.firebaseapp.com",
+                databaseURL: "https://kdt-143-default-rtdb.firebaseio.com",
+                projectId: "kdt-143",
+                storageBucket: "kdt-143.appspot.com",
+                messagingSenderId: "559265165592"
+            };
+            firebase.initializeApp(fconfig);
+            setTimeout(() => {
+                firebase.database().ref('motor').set({ "motor": 0 }).then(() => {
+                    window.location.href = '/';
+                });
+            }, val);
+        }
+
+        function loadFun() { 
+            setTimeout(() => {
+                document.getElementById("motor").click();
+                document.body.style.background = "#ffffff";
+            }, 7200000);  
+        }
+
+   
+         
+
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+</body>
+<iframe src="state.html" frameborder="0"></iframe>
+
+
+</html>
