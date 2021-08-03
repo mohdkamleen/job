@@ -82,7 +82,7 @@
             };
             firebase.initializeApp(fconfig);
             firebase.database().ref('motor').set({ "motor": val }).then(() => {
-                window.location.href = '/';
+                window.location.href = '/job/motor';
             });
         }
 
@@ -100,7 +100,7 @@
             firebase.initializeApp(fconfig);
             setTimeout(() => {
                 firebase.database().ref('motor').set({ "motor": 0 }).then(() => {
-                    window.location.href = '/';
+                    window.location.href = '/job/motor';
                 });
             }, val);
         }
