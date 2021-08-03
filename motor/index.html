@@ -46,7 +46,7 @@
             background: rgb(249, 255, 250);
             text-transform: uppercase;
             border-radius: 5px;
-            transition: all .3s ease;
+            transition: all .3s linear;
             outline: none; 
         }
 
@@ -103,7 +103,7 @@
         function startWithTime(val) {
             document.getElementById("time").style.animationName = "animate";
             document.getElementById("time").style.animationDuration = val+"ms";
-            document.getElementById("time").style.animationTimingFunction = "ease-in-out";
+            document.getElementById("time").style.animationTimingFunction = "linear";
             document.getElementById("time").style.animationFillMode = "forwards";
             var fconfig = {
                 apiKey: "AIzaSyDc5timuQtu7Y4ZxFHafV-NTwT4sU29u8w",
