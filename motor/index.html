@@ -18,6 +18,7 @@
             padding: 0;
             width: 100%;
             height: 100vh;
+            overflow: hidden;
         }
 
         select {
@@ -83,7 +84,7 @@
     </style>
 </head>
 
-<body onload="loadFun()" onclick="displayNotification()">
+<body onload="loadFun()">
     <div>
         <select id="time" onchange="startWithTime(this.value)">
             <option value="0">With Time</option>
@@ -95,7 +96,7 @@
             <option value="1800000">30 Minute</option>
             <option value="3600000">1 Hour</option>
         </select>
-        <span id="message" ></span>
+        <span id="message"></span>
     </div>
     <div>
         <button value="1" onclick="fun(this.value)">On</button>
@@ -163,45 +164,9 @@
             }
 
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(e => {
-                        return console.info("service worker register", e)
-                    })
-                    .catch(error => {
-                        console.error('srvice worker is not register', error);
-                    })
-            } else {
-                console.error('srvice worker is not suported in your browser')
-            }
-
-            Notification.requestPermission(function (status) {
-                console.log('Notification permission status:', status);
-            });
-
-            function displayNotification() {
-                //Ask user if we show notifications
-                if (window.Notification && Notification.permission === 'granted') {
-                    //notification();
-                    // We will create this function in a further step.
-                }
-                // If the user hasn't told whether he wants to be notified or not
-                // Note: because of Chrome, we cannot be sure the permission property
-                // is set, therefore it's unsafe to check for the "default" value.
-                else if (window.Notification && Notification.permission !== 'denied') {
-                    Notification.requestPermission(status => {
-                        if (status === 'granted') {
-                            //notification();
-                        } else {
-                            alert('You denied or dismissed permissions to notifications.');
-                        }
-                    });
-                } else {
-                    // If the user refuses to get notified
-                    alert(
-                        'You denied permissions to notifications. Please go to your browser or phone setting to allow notifications.'
-                    );
-                }
+                navigator.serviceWorker.register('./sw.js');
             } 
+
 
         }
 

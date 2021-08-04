@@ -1,4 +1,3 @@
-
 var appVersion = 'v-1.0';
 var files = [
     './index.html',
@@ -12,10 +11,7 @@ self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(appVersion)
         .then(cache => {
-            return cache.addAll(files)
-            .catch(err => {
-                console.error('Error adding files to cache', err);
-            })
+            return cache.addAll(files);
         })
     )
     console.info('Service Worker is Installed');
