@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100vh; 
+            height: 100vh;  
         }
     </style>
 </head>
@@ -33,7 +33,7 @@
             firebase.database().ref("motor").once('child_added', function (snapshot) {
                 var state = snapshot.val(); 
                 if(state == 1){
-                    document.body.style.background = "radial-gradient(rgb(9, 255, 0), rgb(255, 255, 255))";
+                    document.body.style.background = "radial-gradient(rgb(13, 219, 6), rgb(255, 255, 255))";
                 } else {
                     document.body.style.background = "radial-gradient(#ff0000,rgba(250, 250, 250, 0))";
                 }
