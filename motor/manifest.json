@@ -12,5 +12,5 @@
     ],
     "name": "Automation motor controll",
     "short_name": "motor",
-    "start_url": "/job/motor/index.html"
+    "start_url": "index.html"
   }
