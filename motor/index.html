@@ -34,6 +34,8 @@
         @keyframes animate {
             100% {
                 background-position: 0px 0px;
+                color: rgb(255, 255, 255); 
+                border-color: rgb(255, 255, 255);
             }
         }
 
@@ -103,7 +105,8 @@
 
 
 
-        function startWithTime(val) {
+        function startWithTime(val) {  
+            document.getElementById("time").disabled = true;
             document.getElementById("time").style.animationName = "animate";
             document.getElementById("time").style.animationDuration = val+"ms";
             document.getElementById("time").style.animationTimingFunction = "linear";
@@ -128,7 +131,7 @@
             setTimeout(() => {
                 document.getElementById("motor").click();
                 document.body.style.background = "#ffffff"; 
-            }, 7200000); 
+            }, 7200000);  
         }
 
 
