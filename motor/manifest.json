@@ -1,7 +1,8 @@
 {
-    "background_color": "purple",
+    "background_color": "radial-gradient(rgb(255, 0, 0), rgb(255, 255, 255))",
     "description": "Start and Stop motor from this web and arduino.",
     "display": "fullscreen",
+    "theme_color": "rgb(255, 0, 0)",
     "icons": [
       {
         "src": "icon.jpg",
@@ -9,7 +10,7 @@
         "type": "image/jpg"
       }
     ],
-    "name": "Awesome motor controll",
+    "name": "Automation motor controll",
     "short_name": "motor",
     "start_url": "/job/motor/index.html"
   }
