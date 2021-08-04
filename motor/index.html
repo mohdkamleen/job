@@ -139,7 +139,7 @@
                 firebase.database().ref('motor').set({ "motor": 0 }).then(() => {
                     location.reload();
                 }).catch(() => {
-                document.getElementById("message").innerHTML = "Please Check Your Network Connection :)";
+                document.getElementById("message").innerHTML = "Network Connection Failed";
                 });
             }, val);
         }
