@@ -112,7 +112,7 @@
             };
             firebase.initializeApp(fconfig);
             firebase.database().ref('motor').set({ "motor": val }).then(() => {
-                location.reload();
+                location.reload(); 
             }).catch(() => {
                 document.getElementById("message").innerHTML = "Please Check Your Network Connection :)";
             });
