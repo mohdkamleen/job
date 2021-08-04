@@ -133,6 +133,13 @@
                 document.getElementById("motor").click();
                 document.body.style.background = "#ffffff"; 
             }, 7200000);  
+
+            window.onoffline = function(){
+                document.getElementById("time").style.animationPlayState = "paused"; 
+            }
+            window.ononline = function(){
+                document.getElementById("time").style.animationPlayState = "running";
+            }
         }
 
 
