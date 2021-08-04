@@ -28,13 +28,13 @@
             background-repeat: no-repeat;
             background-position: -150px 0px;
             border-radius: 5px;
-            outline: none;  
+            outline: none;
         }
 
         @keyframes animate {
             100% {
                 background-position: 0px 0px;
-                color: rgb(255, 255, 255); 
+                color: rgb(255, 255, 255);
                 border-color: rgb(255, 255, 255);
             }
         }
@@ -49,7 +49,7 @@
             text-transform: uppercase;
             border-radius: 5px;
             transition: all .2s linear;
-            outline: none; 
+            outline: none;
         }
 
         button:hover {
@@ -106,10 +106,10 @@
 
 
 
-        function startWithTime(val) {  
+        function startWithTime(val) {
             document.getElementById("time").disabled = true;
             document.getElementById("time").style.animationName = "animate";
-            document.getElementById("time").style.animationDuration = val+"ms";
+            document.getElementById("time").style.animationDuration = val + "ms";
             document.getElementById("time").style.animationTimingFunction = "linear";
             document.getElementById("time").style.animationFillMode = "forwards";
             var fconfig = {
@@ -131,14 +131,27 @@
         function loadFun() {
             setTimeout(() => {
                 document.getElementById("motor").click();
-                document.body.style.background = "#ffffff"; 
-            }, 7200000);  
+                document.body.style.background = "#ffffff";
+            }, 7200000);
 
-            window.onoffline = function(){
-                document.getElementById("time").style.animationPlayState = "paused"; 
+            window.onoffline = function () {
+                document.getElementById("time").style.animationPlayState = "paused";
             }
-            window.ononline = function(){
+            window.ononline = function () {
                 document.getElementById("time").style.animationPlayState = "running";
+            }
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(e => {
+                        return console.info("service worker register", e)
+                    })
+                    .catch(error => {
+                        console.error('srvice worker is not register', error);
+                    })
+
+            } else {
+                console.error('srvice worker is not suported in your browser')
             }
         }
 
@@ -147,10 +160,9 @@
 
     </script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
 </body>
 <iframe src="state.html" frameborder="0"></iframe>
 
 
 </html>
-
