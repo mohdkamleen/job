@@ -24,11 +24,11 @@
             width: 150px;
             border: 2px solid rgb(173, 173, 173);
             color: rgb(126, 126, 126);
-            background-image: radial-gradient(rgb(255, 98, 98),rgb(255, 119, 115));
+            background-image: radial-gradient(rgb(255, 98, 98), rgb(255, 119, 115));
             background-repeat: no-repeat;
             background-position: -150px 0px;
             border-radius: 5px;
-            outline: none; 
+            outline: none;
         }
 
         @keyframes animate {
@@ -67,6 +67,17 @@
             width: 100%;
             z-index: -1;
         }
+
+        #message {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            color: rgb(167, 167, 167);
+            font-size: 25px;
+            padding: 5px 15px;
+            margin: 15px;
+            text-transform: capitalize;
+        }
     </style>
 </head>
 
@@ -82,6 +93,7 @@
             <option value="1800000">30 Minute</option>
             <option value="3600000">1 Hour</option>
         </select>
+        <span id="message"></span>
     </div>
     <div>
         <button value="1" onclick="fun(this.value)">On</button>
@@ -100,7 +112,9 @@
             };
             firebase.initializeApp(fconfig);
             firebase.database().ref('motor').set({ "motor": val }).then(() => {
-                window.location.href = '/job/motor';
+                location.reload();
+            }).catch(() => {
+                document.getElementById("message").innerHTML = "Please Check Your Network Connection :)";
             });
         }
 
@@ -123,7 +137,9 @@
             firebase.initializeApp(fconfig);
             setTimeout(() => {
                 firebase.database().ref('motor').set({ "motor": 0 }).then(() => {
-                    window.location.href = '/job/motor';
+                    location.reload();
+                }).catch(() => {
+                document.getElementById("message").innerHTML = "Please Check Your Network Connection :)";
                 });
             }, val);
         }
@@ -136,10 +152,14 @@
 
             window.onoffline = function () {
                 document.getElementById("time").style.animationPlayState = "paused";
+                document.getElementById("message").innerHTML = "Please Check Your Network Connection :)";
             }
+
             window.ononline = function () {
                 document.getElementById("time").style.animationPlayState = "running";
+                document.getElementById("message").innerHTML = "";
             }
+
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js')
                     .then(e => {
