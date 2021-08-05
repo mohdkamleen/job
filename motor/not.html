@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="fun()">
+    <button onclick="showNotification()">show</button>
+
+
+    <script>
+
+        function fun() {
+            navigator.serviceWorker.register('./sw.js');
+
+            function showNotification() {
+                const reg = await navigator.serviceWorker.getRegistration();
+                Notification.requestPermission().then(permission => {
+                    if (permission !== 'granted') {
+                        alert('you need to allow push notifications');
+                    } else {
+                        const timestamp = new Date().getTime() + 5 * 1000; // now plus 5000ms
+                        reg.showNotification(
+                            'Demo Push Notification',
+                            {
+                                tag: timestamp, // a unique ID
+                                body: 'Hello World', // content of the push notification
+                                showTrigger: new TimestampTrigger(timestamp), // set the time for the push notification
+                                data: {
+                                    url: window.location.href, // pass the current url to the notification
+                                },
+                                badge: './assets/badge.png',
+                                icon: './assets/icon.png',
+                            }
+                        );
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

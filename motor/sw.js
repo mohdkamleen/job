@@ -2,6 +2,7 @@ var appVersion = 'v-1.0';
 var files = [
     './index.html',
     './state.html',
+    './not.html',
     './manifest.json',
     './icon.jpg',
     './sw.js'
