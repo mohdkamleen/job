@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Infoware {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                    {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{message}}</p>
+                    </div>
+                    {{/if}}
+
+
+                    <!-- navigation -->
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Info<span>Ware</span></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+                                    <li><a href="/"> Shop </a></li>
+                                    <li><a class="active" href="/login"> Login </a></li>
+                                    <li><a href="/signup"> signup </a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+
+                <div class="baner">
+                    <h2 class="main_heading">LogIn Form Here</h2>
+                    <form action="/login" method="POST">
+                        <div>
+                            <div class="emial_feild">
+                                <label for="username">UserName</label><br>
+                                <input type="text" name="username" id="username"> <br>
+                            </div>
+
+                            <div class="password_feild">
+                                <label for="password">User Password</label><br>
+                                <input type="password" name="password" id="password" onfocus="this.type='text'"
+                                    onblur="this.type='password'"> <br>
+                            </div>
+
+                            <div class="btn_feild">
+                                <button type="submit">LogIn</button>
+                            </div>
+
+                        </div>
+
+                        <p>Create new account <br> <a href="/signup">SignUp</a> || <a href="/forgot">forgot password</a>
+                        </p>
+
+                    </form>
+                     
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>
