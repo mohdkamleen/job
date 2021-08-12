@@ -1,8 +1,7 @@
 {
     "background_color": "rgb(255, 98, 98)",
     "description": "Start and Stop motor from this web and arduino.",
-    "display": "standalone",
-    "theme_color": "rgb(255, 0, 0)",
+    "display": "standalone", 
     "icons": [
       {
         "src": "icon.png",
