@@ -91,15 +91,15 @@
             width: 25px;
             color: rgb(177, 177, 177);
             cursor: pointer;
-            transition: all 10s linear ;
+            transition: all 10s linear;
             border: 3px solid transparent;
-            border-image: radial-gradient(white, red, white,red,white,white, red, white,red,white);
-            border-image-slice: 10;  
+            border-image: radial-gradient(white, red, white, red, white, white, red, white, red, white);
+            border-image-slice: 10;
             animation: refresh 10s linear infinite;
         }
 
         @keyframes refresh {
-            to{
+            to {
                 transform: rotate(999990deg);
             }
         }
@@ -114,6 +114,7 @@
     <div>
         <select id="time" onchange="startWithTime(this.value)">
             <option value="0">With Time</option>
+            <option value="5000">5 Second</option>
             <option value="10000">10 Second</option>
             <option value="30000">30 Second</option>
             <option value="60000">1 Minute</option>
@@ -149,8 +150,18 @@
         }
 
 
-
         function startWithTime(val) {
+
+            var count = val / 1000;
+            const countFun = setInterval(() => {
+                count--
+                if (count == 0) {
+                    clearInterval(countFun)
+                }
+                document.getElementById("time").innerHTML = "<option>" + count + " Second</option";
+            }, 1000);
+
+
             document.getElementById("time").disabled = true;
             document.getElementById("time").style.animationName = "animate";
             document.getElementById("time").style.animationDuration = val + "ms";
