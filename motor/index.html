@@ -41,7 +41,7 @@
                 color: rgb(255, 255, 255);
                 border-color: rgb(255, 255, 255);
             }
-        }
+        } 
 
         button {
             font-size: 20px;
@@ -53,7 +53,43 @@
             border-radius: 5px;
             transition: all .2s linear;
             outline: none;
-            z-index: -66;
+            z-index: -66;  
+        }
+
+        .process{
+            display: flex;
+            justify-content: space-around;
+            align-items: center; 
+            height: 19px;
+            margin: 0;
+        }
+
+        .process div{
+            height: 10px;
+            width: 10px;
+            border: 1px solid gray;
+            background: rgb(255, 37, 37); 
+            border-radius: 50px;
+            animation: process .8s linear infinite;
+            opacity: 0; 
+        }
+
+        .process div:nth-child(1){
+            animation-delay: .2s;
+        }
+
+        .process div:nth-child(2){
+            animation-delay: .4s;
+        }
+
+        .process div:nth-child(3){
+            animation-delay: .6s;
+        }
+
+        @keyframes process {
+            to{
+                opacity: 1;
+            }
         }
 
         button:hover {
@@ -127,8 +163,8 @@
         <span id="refresh" title="Refresh" onclick="location.reload()"></span>
     </div>
     <div>
-        <button value="1" onclick="fun(this.value);this.innerHTML='acivating...';">ON</button>
-        <button value="0" id="motor" onclick="fun(this.value);this.innerHTML='deacivating...';">OFF</button>
+        <button value="1" onclick="fun(this.value);this.innerHTML='<div class=process><div></div><div></div><div></div></div>';">ON</button>
+        <button value="0" id="motor" onclick="fun(this.value);this.innerHTML='<div class=process><div></div><div></div><div></div></span>';">OFF</button>
     </div>
     <script>
 
