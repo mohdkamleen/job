@@ -1,7 +1,7 @@
-{
-    "background_color": "rgb(255, 98, 98)",
+{ 
     "description": "Start and Stop motor from this web and arduino.",
-    "display": "standalone", 
+    "display": "standalone",
+    "theme_color": "rgb(255, 60, 60)",
     "icons": [
       {
         "src": "icon.png",
@@ -9,7 +9,7 @@
         "type": "image/png"
       }
     ],
-    "name": "Automation motor controll From Node MCU",
-    "short_name": "Automation Motor",
+    "name": "Automation motor",
+    "short_name": "Motor",
     "start_url": "index.html"
   }
