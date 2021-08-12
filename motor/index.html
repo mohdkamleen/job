@@ -31,6 +31,7 @@
             background-position: -150px 0px;
             border-radius: 5px;
             outline: none;
+            z-index: -2;
         }
 
         @keyframes animate {
@@ -47,12 +48,11 @@
             margin: 0px 10px;
             border: 2px solid rgb(173, 173, 173);
             color: rgb(167, 167, 167);
-            background: rgb(249, 255, 250);
-            text-transform: uppercase;
+            background: rgb(249, 255, 250); 
             border-radius: 5px;
             transition: all .2s linear;
             outline: none; 
-            z-index: -2;
+            z-index: -66;
         }
 
         button:hover {
@@ -99,12 +99,12 @@
         <span id="message"></span>
     </div>
     <div>
-        <button value="1" onclick="fun(this.value)">On</button>
-        <button value="0" id="motor" onclick="fun(this.value)">Off</button>
+        <button value="1" onclick="fun(this.value);this.innerHTML='acivating...';">ON</button>
+        <button value="0" id="motor" onclick="fun(this.value);this.innerHTML='deacivating...';">OFF</button>
     </div>
     <script>
 
-        function fun(val) {
+        function fun(val) {  
             var fconfig = {
                 apiKey: "AIzaSyDc5timuQtu7Y4ZxFHafV-NTwT4sU29u8w",
                 authDomain: "kdt-143.firebaseapp.com",
