@@ -43,7 +43,7 @@
                 messagingSenderId: "559265165592"
             };
             firebase.initializeApp(fconfig);
-            firebase.database().ref("motor").once('child_added', function (snapshot) {
+            firebase.database().ref("motor").on('child_added', function (snapshot) {
                 var state = snapshot.val();
                 if (state == 1) {
                     document.body.style.background = "radial-gradient(rgb(0, 255, 0), rgb(255, 255, 255))";
