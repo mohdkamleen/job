@@ -1,0 +1,15 @@
+
+{ 
+    "description": "Chat ",
+    "display": "standalone", 
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "name": "Chat Friend",
+    "short_name": "Chat",
+    "start_url": "chat.html"
+  }
