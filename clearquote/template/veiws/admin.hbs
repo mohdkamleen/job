@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Infoware {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                    {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{ message}}</p>
+                    </div>
+                    {{/if}}
+
+
+                    <!-- navigation -->
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Clear<span>Qoute </span><code>{{#if user}}{{user}}{{/if}}</code></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+                                    <li><a href="/"> Home </a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li> 
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </header>
+
+                <div class="baner"> 
+
+                    <h2 class="main_heading">Auth User Details</h2>
+
+                    <div class="auth-user">
+                        <table cellspacing="0" border="1">
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Profile</th>
+                                <th>Password</th>
+                                <th colspan="2">Actions</th>
+                            </tr>
+
+
+                            {{#if auth}}
+                            {{#each auth}}
+                            <tr align="center">
+                                <form action="/userupdate" method="POST">
+                                    <td><input value="{{this.id}}" name="id" class="id" readonly="true"></td>
+                                    <td><input value="{{this.name}}" name="name" autofocus="true"></td>
+                                    <td><input value="{{this.username}}" name="username"></td>
+                                     <td><img style="height: 60px;" src="{{this.image}}" alt="{{this.name}}"></td>
+                                    <td><input value="{{this.password}}" name="password"></td>
+                                    <td>
+                                        <button><a href="/userdelete/{{this.id}}">delete</a></button>
+                                        <button type="submit">update</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </table>
+                    </div>
+                    <div class="copyright">Copyright &copy; kamleen
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>

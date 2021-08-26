@@ -1,0 +1,84 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+} 
+
+.baner{
+    position: relative;
+    top: 50px; 
+    margin: 20px 5% ; 
+    height: 100%;  
+}
+
+form{
+    position: absolute;
+    width: 100%;   
+    padding: 20px 5%;
+}
+form label{
+    font-weight: 500;
+}
+form input{
+    width: 100%;
+    max-width: 400px !important;   
+    padding: 7px 10px;
+    border-radius: 2px; 
+    color: rgb(61, 61, 61);      
+    border: 1px solid rgb(156, 156, 156);  
+    background: transparent; 
+    font-size: 15px;
+    margin: 5px 0px;
+}
+
+.emial_feild, .password_feild{
+    margin-top: 10px;
+}
+ 
+
+button{  
+    padding: 10px 15px; 
+    color: rgb(61, 61, 61);
+    text-transform: uppercase; 
+    transition: all .2s linear 100ms ;     
+    font-weight: 600;
+    border: 1px solid rgb(196, 196, 196);
+    margin-top: 20px;
+    position: relative; 
+    background: transparent;
+    border-radius: 2px; 
+}
+
+button::before{  
+    content: ""; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: rgb(151, 151, 151);
+    width: 0%; 
+    transition: all .2s linear ; 
+    border-radius: 2px; 
+    z-index: -3;
+}
+
+button:hover::before { 
+    width: 100%;  
+    left: 0;
+}
+
+button:hover { 
+    color: #ffffff;
+}
+ 
+ 
+form p{
+    margin: 20px;
+}
+
+form a{
+    color: #4686b1;  
+}
+
+form a:hover{
+    color: #035c97;  
+}

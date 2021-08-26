@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Infoware {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                    {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{ message}}</p>
+                    </div>
+                    {{/if}}
+
+
+                    <!-- navigation -->
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Clear<span>Qoute </span></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+
+                                    {{#if currentUser}}
+                                    <li><a class="active" href="/"> Home </a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="/logout">logout</a></li>
+                                    {{else}}
+                                    <li><a class="active" href="/"> Home </a></li>
+                                    <li><a href="/login"> Login </a></li>
+                                    <li><a href="/signup"> signup </a></li>
+                                    {{/if}}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </header>
+
+                <div class="baner">
+
+
+                    {{#if currentUser}}
+                    {{#each currentUser}}
+                    <h2 class="main_heading">Current User Details Here</h2>
+                    <form action="/updateProfile" method="post" enctype="multipart/form-data">
+                        <div class="currentUser">
+                            <div>
+                                <div onclick="document.getElementById('file').click()" id="img" style="background:url({{this.image}}) ;background-size:cover; " ></div>
+                                    <input type="file" value="{{this.image}}" name="profileImage" id="file"
+                                        onchange="changePic(this)" style="display: none;">
+                                </div>
+                                <div>
+                                    <input type="hidden" value="{{this.id}}" name="id"><br>
+                                    <input type="text" value="{{this.name}}" name="name"><br>
+                                    <input type="text" value="{{this.username}}" name="username"><br>
+                                    <button type="submit" value="Update">Update</button>
+                                </div>
+                            </div>
+                    </form>
+                    {{/each}}
+                    {{/if}}
+
+
+                    <script>
+                        function changePic(input) {
+
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    document.getElementById("img").style.backgroundImage = "url(" + e.target.result + ")";
+                                }
+
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+
+                    </script>
+                    <br><br>
+
+                    <h2 class="main_heading">Users Details Here</h2>
+                    <div class="auth-user">
+                        <table cellspacing="0" border="1">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Profile</th>
+                                <th>Password</th>
+                                <th>Status</th>
+                            </tr>
+
+
+                            {{#if auth}}
+                            {{#each auth}}
+                            <tr align="center">
+                                <td>{{this.id}}</td>
+                                <td>{{this.name}}</td>
+                                <td>{{this.username}}</td>
+                                <td><img style="height: 70px;" src="{{this.image}}" alt="{{this.name}}"></td>
+                                <td> <input type="password" value="{{this.password}}" disabled
+                                        style="width: 50px; text-align:center;"></td>
+                                <td><button>Online</button></td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </table>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="copyright">Copyright &copy; <a href="https://mohdkamleen.blogspot.com/" target="_blank"
+                            rel="noopener noreferrer">kamleen</a> 2020 -
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>

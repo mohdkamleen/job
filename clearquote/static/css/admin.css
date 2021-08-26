@@ -1,0 +1,39 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+} 
+
+.baner{
+    position: absolute;
+    top: 50px; 
+    margin: 20px 5% ; 
+    height: 100%;  
+}  
+ 
+
+table{
+    width: 100%; 
+    margin: 30px;
+}
+ table td {
+     padding: 5px;
+
+ }
+table th{
+     padding: 5px 10px;
+     background: rgb(109, 108, 108);
+     color: #fff;
+ }
+
+  input{
+     border: none;
+     outline: none;
+     margin: 0;
+     padding: 0;
+     min-width: 100px;
+     font-size: 15px;
+ }
+
+  input.id{ 
+     width: 20px;
+ }
