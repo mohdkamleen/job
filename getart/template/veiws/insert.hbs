@@ -64,8 +64,8 @@
                                 <input type="number" name="rate" id="rate" placeholder="Item rate" required> <br><br>
 
                                 <label for="rate">Upload Media</label><br>
-                                <input type="file" onchange="changePic(this)" name="image" id="product_image" required
-                                    accept="image/*">
+                                <input type="file" onchange="changePic(this)" name="product_image" id="product_image"
+                                    required accept="image/*">
                                 <br><br>
 
                                 <label for="rate"> Product Variants </label><br>
@@ -99,9 +99,17 @@
                                     <input type="file" name="variantsImg4" style="display: none;" accept="image/*"
                                         onchange="variants4(this)"><br>
                                     <img class="variantsImg" src="">
-                                </label> <br>
+                                </label> <br><br>
 
-
+                                <label>Product Stock Status<br>
+                                    <input type="text" list="menu" required name="product_status"
+                                        placeholder="Enter product status"></label>
+                                <datalist id="menu">
+                                    <option value="In Stock"></option>
+                                    <option value="Out Of Stock"></option>
+                                    <option value="Limited Stock"></option> 
+                                </datalist>
+                                <br> <br>
 
                                 <div class="btn_feild">
                                     <button type="submit">Add Product</button>

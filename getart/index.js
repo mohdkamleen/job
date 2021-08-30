@@ -58,12 +58,16 @@ conn.query(sql, (err, res) => {
 	console.log("(auth) table created")
 })
 // create table for items  
-var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), variantsImg1 VARCHAR(255), variantsImg2 VARCHAR(255), variantsImg3 VARCHAR(255), variantsTxt4 VARCHAR(255),variantsImg4 VARCHAR(255), variantsTxt1 VARCHAR(255),variantsTxt2 VARCHAR(255),variantsTxt3 VARCHAR(255),inCard INT(50), description VARCHAR(255), title VARCHAR(255), rate VARCHAR(255))";
+var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), variantsImg1 VARCHAR(255), variantsImg2 VARCHAR(255), variantsImg3 VARCHAR(255), variantsTxt4 VARCHAR(255),variantsImg4 VARCHAR(255), variantsTxt1 VARCHAR(255),variantsTxt2 VARCHAR(255),variantsTxt3 VARCHAR(255),inCard INT(50), description VARCHAR(255), title VARCHAR(255), rate VARCHAR(255), stockStatus VARCHAR(255))";
 conn.query(sql, (err, res) => {
 	console.log("(items) table created")
 })
-
-
+ 
+// var sql = "DROP DATABASE getart";
+// conn.query(sql, (err, res) => {
+// 	console.log("(items) table created")
+// })
+ 
 
 // get and post urls     
 
@@ -85,12 +89,12 @@ app.get('/', function (request, response) {
 			if (results.length > 0) {
 				response.render("index", {
 					title: "| Dashboard",
-					data: results
+					data: results 
 				})
 			} else {
 				response.render("index", {
 					title: "| Dashboard",
-					message: "Not avilable items"
+					message: "Not avilable items" 
 				})
 			}
 		})
@@ -173,7 +177,7 @@ app.post('/login', function (request, response) {
 
 				var sql = "CREATE TABLE if not exists " + request.session.username + " (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), variant VARCHAR(255),inCard INT(50), description VARCHAR(255), title VARCHAR(255), quantity VARCHAR(255), rate VARCHAR(255))";
 				conn.query(sql, (err, res) => {
-					console.log(request.session.username + "table created")
+					console.log(request.session.username + " table created")
 				})
 
 			} else {
@@ -253,29 +257,41 @@ app.get('/cart', function (req, res) {
 		res.redirect("/")
 	}
 
-})
+}) 
 
 app.post('/insert', function (request, response) {
 
-	var file = request.files.uploaded_image;
+
+	if(request.session.loggedin){
+	var title = request.files.title;
 	var description = request.body.description;
 	var rate = request.body.rate;
-	var itemadd = true;
-
-	if (file && description && rate) {
-		file.mv('static/image/' + file.name, function (err) {
-			conn.query('INSERT INTO `items`(`image`, `description`, `rate`, `itemadd`) VALUES (?,?,?,?)', ['/image/' + file.name, description, rate, itemadd], function (err, red, fields) {
+	var file = request.files.product_image;
+	var variantsImg1 = request.files.variantsImg1;
+	var variantsImg2 = request.files.variantsImg2;
+	var variantsImg3 = request.files.variantsImg3;
+	var variantsImg4 = request.files.variantsImg4;
+	var variantsTxt1 = request.body.variantsTxt1;
+	var variantsTxt2 = request.body.variantsTxt2;
+	var variantsTxt3 = request.body.variantsTxt3;
+	var variantsTxt4 = request.body.variantsTxt4; 
+	var product_status = request.body.product_status;
+	var inCard = 0;
+ 
+	conn.query('INSERT INTO '+request.session.username+'(`image`, `inCard`, `description`, `title`, `rate`, `quantity`) VALUES (?,?,?,?,?,?)', ['/product_image/'+file.name, inCard, description,title, rate, 1])
+		// file.mv('static/product_image/' + file.name, function (err) { 
+			conn.query('INSERT INTO `items`(`image`, `variantsImg1`, `variantsImg2`, `variantsImg3`, `variantsImg4`, `variantsTxt1`, `variantsTxt2`, `variantsTxt3`, `variantsTxt4`, `inCard`, `description`, `title`, `rate`, `stockStatus`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', ['/product_image/'+file.name, '/product_image/'+ variantsImg1.name, '/product_image/'+ variantsImg2.name, '/product_image/'+ variantsImg3.name, '/product_image/'+ variantsImg4.name,variantsTxt1,variantsTxt2,variantsTxt3,variantsTxt4,inCard, description,title, rate,product_status], function (err, red, fields) {
 				if (err) throw err;
+				// variants1.mv('static/product_image/' + variantsImg1.name);
+				// variantsImg2.mv('static/product_image/' + variantsImg2.name);
+				// variantsImg3.mv('static/product_image/' + variantsImg3.name);
+				// variantsImg4.mv('static/product_image/' + variantsImg4.name);
 				response.redirect("/admin")
 			})
-		})
-
-
+		// })  
 	} else {
-		response.send('Please enter all feilds');
-		response.end();
+		response.redirect("/login"); 
 	}
-
 });
 
 
