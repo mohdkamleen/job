@@ -58,7 +58,7 @@ conn.query(sql, (err, res) => {
 	console.log("(auth) table created")
 })
 // create table for items  
-var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), variantsImg1 VARCHAR(255), variantsImg2 VARCHAR(255), variantsImg3 VARCHAR(255), variantsTxt1 VARCHAR(255),variantsTxt2 VARCHAR(255),variantsTxt3 VARCHAR(255),inCard INT(50), description VARCHAR(255), title VARCHAR(255), rate VARCHAR(255))";
+var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, image VARCHAR(255), variantsImg1 VARCHAR(255), variantsImg2 VARCHAR(255), variantsImg3 VARCHAR(255), variantsTxt4 VARCHAR(255),variantsImg4 VARCHAR(255), variantsTxt1 VARCHAR(255),variantsTxt2 VARCHAR(255),variantsTxt3 VARCHAR(255),inCard INT(50), description VARCHAR(255), title VARCHAR(255), rate VARCHAR(255))";
 conn.query(sql, (err, res) => {
 	console.log("(items) table created")
 })
@@ -198,7 +198,7 @@ app.post('/signup', function (request, response) {
 			if (results.length > 0) {
 				response.send('UserName alredy exist');
 			} else {
-				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function (err, res) {
+				conn.query("INSERT INTO `auth`(`name`, `username`, `password`) VALUES (?,?,?)", [name, username, password], function (err,results, res) {
 					if (err) throw err;
 					console.log(name, 'is created');
 

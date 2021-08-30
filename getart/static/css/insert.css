@@ -1,0 +1,115 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+    text-align: center;padding: 10px;
+} 
+
+.baner{
+    position: absolute;
+    top: 50px;   
+    width: 90%;
+    overflow: hidden;
+    margin: auto 5%;
+}
+
+.items{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column; 
+}  
+ 
+label{
+    font-weight: 500;
+}
+
+input{
+    width: 400px; 
+    padding: 7px 10px;
+    border-radius: 2px; 
+    color: rgb(61, 61, 61);      
+    border: 1px solid rgb(124, 124, 124);  
+    background: rgb(250, 250, 250); 
+    font-size: 15px;
+    margin: 5px 0px;
+}
+
+textarea{
+    padding: 5px;
+}
+
+#product_image{
+    width: 400px; 
+    height: 300px;
+    padding: 7px 10px;
+    border-radius: 2px; 
+    color: rgb(61, 61, 61);      
+    border: 1px solid rgb(124, 124, 124);  
+    background: rgb(250, 250, 250); 
+    font-size: 15px;
+    margin: 5px 0px; 
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+
+.variants{
+    width: 150px !important;  
+}
+
+.variantsImg{
+    height: 150px;
+    padding: 20px;
+}
+
+.fa-image{
+    color: gray;
+    font-size: 25px;
+    margin: 5px;
+}
+
+button{  
+    padding: 10px 15px; 
+    color: rgb(238, 238, 238);
+    text-transform: uppercase; 
+    transition: all .2s linear 100ms ;     
+    font-weight: 600;
+    border: 1px solid rgb(80, 80, 80);
+    margin-top: 20px;
+    position: relative; 
+    background: rgb(47, 47, 47);
+    width: 400px;
+    border-radius: 5px; 
+}
+
+button::before{  
+    content: "Add Product"; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: rgb(246, 246, 246);
+    width: 0%; 
+    transition: all .2s linear ; 
+    border-radius: 5px;  
+    line-height: 35px;
+}
+
+button:hover::before { 
+    width: 100%;  
+    left: 0;
+}
+
+button:hover { 
+    color: #2b2b2b;
+}
+form p{
+    margin: 20px;
+}
+
+form a{
+    color: #4686b1;  
+}
+
+form a:hover{
+    color: #035c97;  
+}

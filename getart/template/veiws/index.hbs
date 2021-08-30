@@ -70,62 +70,84 @@
 
                         <div class="item">
 
-                                <div class="item_img"
-                                    style="background-image: url({{this.image}}); background-size:cover;">
+                            <div class="item_img" style="background-image: url({{this.image}}); background-size:cover;">
+                            </div>
+
+
+                            <div class="footer">
+
+                                <p id="isStock" class="{{this.stockStatus}}">{{this.stockStatus}}</p>
+
+                                <h3>{{this.title}}</h3>
+
+                                <div class="rate">
+                                    <i>₹ 1{{this.rate}}</i> &nbsp;
+                                    <span> ₹ {{this.rate}} </span>
                                 </div>
 
-
-                                <div class="footer">
-
-                                    <p id="isStock">{{this.stockStatus}}</p>
-
-                                    <h3>{{this.title}}</h3>
-
-                                    <div class="rate">
-                                        <i>₹ 1{{this.rate}}</i> &nbsp;
-                                        <span> ₹ {{this.rate}} </span>
-                                    </div>
-
-                                    <p class="description">
-                                        {{this.description}}
-                                    </p>
+                                <p class="description">
+                                    {{this.description}}
+                                </p>
 
 
-                            <form action="/updateIntoCart" method="post">
-                            <input type="hidden" name="id" value="{{this.id}}">
+                                <form action="/updateIntoCart" method="post">
+                                    <input type="hidden" name="id" value="{{this.id}}">
                                     <div class="variants">
+                                        
+                                        {{#if this.variantsTxt1}}
+                                        <label>
+                                            {{#if this.variantsImg1}}
+                                            <img src="{{this.variantsImg1}}" alt="{{this.variantsTxt1}}"> <br>
+                                            {{/if}}
+                                            <input type="radio" name="variant" value="{{this.variantsTxt1}}" required>
+                                            <span>{{this.variantsTxt1}}</span> 
+                                        </label>
+                                        {{/if}}
 
-                                        <label>
-                                            <div
-                                                style="background-image: url({{this.image}}); background-size:100% 100%">
-                                                <input type="radio" name="variant" value="golden" required>
-                                                <p>golden</p>
-                                            </div>
-                                        </label>
-                                        <label>
-                                            <div
-                                                style="background-image: url({{this.image}}); background-size:100% 100%">
-                                                <input type="radio" name="variant" value="silver" required>
-                                                <p>silver</p>
-                                            </div>
-                                        </label>
-                                        <label>
-                                            <div
-                                                style="background-image: url({{this.image}}); background-size:100% 100%">
-                                                <input type="radio" name="variant" value="mettel" required>
-                                                <p>mettel </p>
-                                            </div>
-                                        </label>
 
+                                        {{#if this.variantsTxt2}}
+                                        <label>
+                                            {{#if this.variantsImg2}}
+                                            <img src="{{this.variantsImg2}}" alt="{{this.variantsTxt2}}"> <br>
+                                            {{/if}}
+                                            <input type="radio" name="variant" value="{{this.variantsTxt2}}" required>
+                                            <span>{{this.variantsTxt2}}</span> 
+                                        </label>
+                                        {{/if}}
+
+
+                                        {{#if this.variantsTxt3}}
+                                        <label>
+                                            {{#if this.variantsImg3}}
+                                            <img src="{{this.variantsImg3}}" alt="{{this.variantsTxt3}}"> <br>
+                                            {{/if}}
+                                            <input type="radio" name="variant" value="{{this.variantsTxt3}}" required>
+                                            <span>{{this.variantsTxt3}}</span> 
+                                        </label>
+                                        {{/if}}
+
+  
+
+                                        {{#if this.variantsTxt4}}
+                                        <label>
+                                            {{#if this.variantsImg4}}
+                                            <img src="{{this.variantsImg4}}" alt="{{this.variantsTxt4}}"> <br>
+                                            {{/if}}
+                                            <input type="radio" name="variant" value="{{this.variantsTxt4}}" required>
+                                            <span>{{this.variantsTxt4}}</span> 
+                                        </label>
+                                        {{/if}}
+
+  
                                     </div>
 
                                     <div class="buttons">
                                         <button class="add" type="submit">ADD TO CART</button>
                                         <button class="buy">BUY IT NOW</button>
                                     </div>
-                                    
-                        </form>
-                                </div>
+
+                                </form>
+                            </div>
                         </div>
 
                         <div class="line">

@@ -6,7 +6,7 @@
     {{>header}}
     <!-- include css files -->
 
-    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/insert.css">
 </head>
 
 <body>
@@ -30,13 +30,13 @@
                         <nav>
                             <!-- logo -->
                             <div class="logo">
-                               <h1>Get<span>Art </span><code>{{#if user}}({{user}}){{/if}}</code></h1>
+                                <h1>Get<span>Art </span><code>{{#if user}}({{user}}){{/if}}</code></h1>
                             </div>
 
                             <!-- menu  -->
                             <div class="nav" id="nav">
                                 <ul>
-                                     <li><a href="/"> Shop </a></li>
+                                    <li><a href="/"> Shop </a></li>
                                     <li><a href="/cart">cart</a></li>
                                     <li><a class="active" href="/admin">admin</a></li>
                                     <li><a href="/logout">logout</a></li>
@@ -49,43 +49,129 @@
 
                 <div class="baner">
                     <h2 class="main_heading">Insert Items Here</h2>
-                    <form action="/insert" method="POST" enctype="multipart/form-data">
-                        <div>
+                    <div class="items">
+                        <form action="/insert" method="POST" enctype="multipart/form-data">
+                            <div>
+                                <label for="image">Product Title</label><br>
+                                <input type="text" required name="title" maxlength="60" placeholder="Enter title here">
+                                <br> <br>
 
-                             <div class="password_feild">
-                                <label for="image">Item Image</label><br>
-                                <input type="file" required name="uploaded_image" id="image" accept="image/*"> <br>
-                            </div>
+                                <label for="description"> Product Description </label><br>
+                                <textarea type="text" placeholder="Product Description" name="description" rows="10"
+                                    cols="53" maxlength="260" id="description" required></textarea> <br><br>
 
-
-                            <div class="name_feild">
-                                <label for="description"> Item Description </label><br>
-                                <input type="text" name="description" id="description" required> <br>
-                            </div>
-
-                            <div class="emial_feild">
                                 <label for="rate">Item Rate</label><br>
-                                <input type="number" name="rate" id="rate" required> <br>
+                                <input type="number" name="rate" id="rate" placeholder="Item rate" required> <br><br>
+
+                                <label for="rate">Upload Media</label><br>
+                                <input type="file" onchange="changePic(this)" name="image" id="product_image" required
+                                    accept="image/*">
+                                <br><br>
+
+                                <label for="rate"> Product Variants </label><br>
+                                1. <input name="variantsTxt1" class="variants" placeholder="size, color etc">
+                                <label>
+                                    <i class="fa fa-image"></i>
+                                    <input type="file" name="variantsImg1" style="display: none;" accept="image/*"
+                                        onchange="variants1(this)"><br>
+                                    <img class="variantsImg" src="">
+                                </label> <br>
+
+                                2. <input name="variantsTxt2" class="variants" placeholder="size, color etc">
+                                <label>
+                                    <i class="fa fa-image"></i>
+                                    <input type="file" name="variantsImg2" style="display: none;" accept="image/*"
+                                        onchange="variants2(this)"><br>
+                                    <img class="variantsImg" src="">
+                                </label> <br>
+
+                                3. <input name="variantsTxt3" class="variants" placeholder="size, color etc">
+                                <label>
+                                    <i class="fa fa-image"></i>
+                                    <input type="file" name="variantsImg3" style="display: none;" accept="image/*"
+                                        onchange="variants3(this)"><br>
+                                    <img class="variantsImg" src="">
+                                </label> <br>
+
+                                4. <input name="variantsTxt4" class="variants" placeholder="size, color etc">
+                                <label>
+                                    <i class="fa fa-image"></i>
+                                    <input type="file" name="variantsImg4" style="display: none;" accept="image/*"
+                                        onchange="variants4(this)"><br>
+                                    <img class="variantsImg" src="">
+                                </label> <br>
+
+
+
+                                <div class="btn_feild">
+                                    <button type="submit">Add Product</button>
+                                </div>
+
                             </div>
 
-                           
-                            <div class="btn_feild">
-                                <button type="submit">Insert</button>
-                            </div>
+                        </form> <br><br>
 
-                        </div>
-
-                        {{!-- <p>Already have account <a href="/login">LogIn</a></p> --}}
-                    </form>
-
+                    </div>
+                    <div class="copyright">Copyright &copy; kamleen
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
                 </div>
 
+                <script>
+                    function changePic(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementById("product_image").style.backgroundImage = "url(" + e.target.result + ")";
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
 
+                    function variants2(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementsByClassName("variantsImg")[1].src = e.target.result;
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    function variants3(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementsByClassName("variantsImg")[2].src = e.target.result;
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    function variants4(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementsByClassName("variantsImg")[3].src = e.target.result;
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    function variants1(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementsByClassName("variantsImg")[0].src = e.target.result;
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                </script>
             </div>
+
         </div>
     </div>
 
-   
+
     <script src="/js/nav.js"></script>
 </body>
 
