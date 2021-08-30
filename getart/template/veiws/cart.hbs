@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>GetArt {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                    {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{ message}}</p>
+                    </div>
+                    {{/if}}
+
+
+                    <!-- navigation -->
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Get<span>Art </span><code>{{#if user}}({{user}}){{/if}}</code></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+
+                                    <li><a href="/"> Shop </a></li>
+                                    <li><a class="active" href="/cart">cart</a></li>
+                                    <li><a href="/admin">admin</a></li>
+                                    <li><a href="/logout">logout</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </header>
+
+                <div class="baner">
+                    <h2 class="main_heading">Shopping Cart Here</h2>
+                    <div class="items">
+
+
+
+
+
+                        {{#if data}}
+                        {{#each data}}
+
+
+                        <div class="item">
+
+                            <div class="img_div" style="background-image: url({{this.image}}); background-size: cover;"></div>
+                          
+                            <div class="footer"> 
+                                    <h3>{{this.title}}</h3> 
+ 
+                                    <p>{{this.variant}}</p> 
+ 
+                                    <div class="rate_qnt">
+                                    <div> 
+                                        &nbsp;<span onclick="encreseItem(this);">{{this.quantity}} + </span>&nbsp;
+
+                                        <script>
+                                            function encreseItem(e){
+                                               q = parseInt(e.innerHTML);
+                                               e.innerHTML = q+1 + "    + ";
+                                            }
+                                        </script> 
+                                    </div>
+                                    <span style="color: green; font-weight:500;">₹ {{this.rate}}</span>  
+                                </div>
+                            </div>        
+
+                        </div>
+
+                        <div class="line">
+                            <hr>  
+                            * 
+                            <hr>
+                        </div> 
+
+                        {{/each}}
+                        {{/if}}
+
+                     <button class="ptb">process to buy</button>
+
+                    </div>
+                    <div class="copyright">Copyright &copy; kamleen
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>

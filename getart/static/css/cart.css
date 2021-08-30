@@ -1,0 +1,119 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+    text-align: center;padding: 10px;
+} 
+
+.baner{
+    position: absolute;
+    top: 50px;   
+    width: 90%;
+    overflow: hidden;
+    margin: auto 5%;
+}
+
+.items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+
+.item{ 
+    display: flex;    
+    align-items: center; 
+    justify-content: center;
+    margin: 10px;  
+    padding: 10px;  
+    min-width: 600px;
+    transition: all .3s ease;
+    background: rgb(250, 250, 250);
+}  
+
+.item div h3{
+    text-transform: uppercase;
+    color: rgb(73, 73, 73); 
+    padding: 0px 15px;
+} 
+.item div p{ 
+    color: rgb(73, 73, 73); 
+    padding: 10px 15px;
+    font-weight: 500; 
+} 
+
+.img_div {
+    border: 2px solid gray;
+    height: 120px;
+    width: 120px; 
+    border-radius: 10px;
+} 
+
+.rate_qnt{ 
+    display: flex;    
+    align-items: center; 
+    justify-content: space-around;
+}
+.rate_qnt div {  
+    border: 1px solid gray; 
+    box-shadow: 1px 1px 10px 2px rgb(172, 172, 172);
+}
+.rate_qnt div span{ 
+   font-weight: 500; 
+   font-size: 16px;
+   cursor: pointer;
+   user-select: none;
+} 
+
+
+.line{ 
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.line hr{
+    flex: 1;
+}
+
+
+.ptb{ 
+    border: 1px solid rgb(77, 77, 77); 
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 10px;
+    max-width: 700px;
+    border-radius: 5px;
+    background-color: rgb(44, 44, 44);
+    transition: all .1s linear;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .insert_item a{
+    display: flex;
+    justify-content: center; 
+    line-height: 130px; 
+    font-size: 60px;
+    font-weight: bolder;
+    color: rgb(206, 206, 206); 
+} */
+ 
