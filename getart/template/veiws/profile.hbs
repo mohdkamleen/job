@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>GetArt {{title}}</title>
+    {{>header}}
+    <!-- include css files -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+
+
+                    {{#if message}}
+                    <div id="msg">
+                        <i class="fa fa-times" onclick="document.getElementById('msg').style.display='none'"></i>
+                        <p>{{ message}}</p>
+                    </div>
+                    {{/if}}
+
+
+                    <!-- navigation -->
+                    <div class="navigation">
+                        <div class="hamburger">
+                            <div class=" fa fa-times ham_toggle"></div>
+                        </div>
+                        <nav>
+                            <!-- logo -->
+                            <div class="logo">
+                                <h1>Get<span>Art </span><code>{{#if data}}({{data.name}}){{/if}}</code></h1>
+                            </div>
+
+                            <!-- menu  -->
+                            <div class="nav" id="nav">
+                                <ul>
+
+                                    {{#if user}}
+                                    <li><a href="/"> Shop </a></li>
+                                    <li><a href="/cart">cart</a></li>
+                                    <li><a href="/admin">admin</a></li>
+                                    <li><a class="active" href="/profile">profile</a></li>
+                                    <li><a href="/logout">logout</a></li>
+                                    {{else}}
+                                    <li><a class="active" href="/"> Shop </a></li>
+                                    <li><a href="/login"> Login </a></li>
+                                    <li><a href="/signup"> signup </a></li>
+                                    {{/if}}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </header>
+
+                <div class="baner">
+                    <h2 class="main_heading">Profile Details Here</h2>
+                    <div class="items">
+
+
+
+
+
+                        {{#if data}} 
+
+                        <div class="item">
+                            <span>{{data.name}}</span>
+                            <span>{{data.id}}</span>
+                            <span>{{data.username}}</span>
+                            </div>
+
+                            
+
+                        <div class="line">
+                            <hr>
+                            *
+                            <hr>
+                        </div> 
+                        {{/if}}
+
+
+                    </div>
+                    <div class="copyright">Copyright &copy; <a href="https://mohdkamleen.blogspot.com/" target="_blank"
+                            rel="noopener noreferrer">kamleen</a> 2020 -
+                        <script>document.write(new Date().getFullYear());</script>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="/js/nav.js"></script>
+</body>
+
+</html>

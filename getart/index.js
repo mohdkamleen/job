@@ -376,6 +376,29 @@ app.post('/forgot', function (req, res) {
 })
 
 
+app.get('/profile', function (request, response) {
+
+
+	if (request.session.loggedin) {
+ 
+		conn.query('SELECT * FROM `auth` where username = ?',[request.session.username], function (error, auth, fields) {
+			conn.query('SELECT * FROM `items`', function (error, results, fields) {
+				var profile = "";
+				auth.forEach(element => {
+					profile = element
+				});
+			response.render("profile", {
+				title: "| Profile", 
+				data: profile,
+				user: request.session.username 
+			})
+		})
+		})
+
+	} else {
+		response.redirect("/login");
+	}
+})
 
 
 //  application run code here 

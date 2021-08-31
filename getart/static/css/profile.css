@@ -1,0 +1,54 @@
+.main_heading{
+    color: rgb(88, 88, 88);
+    margin: 10px;
+    text-align: center;padding: 10px;
+} 
+
+.baner{
+    position: absolute;
+    top: 50px;   
+    width: 90%;
+    overflow: hidden;
+    margin: auto 5%;
+}
+
+.items{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+}
+  
+.item{ 
+    display: flex;    
+    align-items: center; 
+    justify-content: center;
+    margin: 10px;  
+    padding: 10px;  
+    max-width: 1000px;
+    transition: all .3s ease;
+    background: rgb(252, 252, 252); 
+}  
+
+.item:hover{ 
+    box-shadow: 1px 1px 5px 2px rgb(224, 224, 224),
+                1px 1px 10px 2px rgb(199, 199, 199);
+}
+ 
+
+
+.line{ 
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.line hr{
+    flex: 1;
+}
+
+
+
+
+ 
