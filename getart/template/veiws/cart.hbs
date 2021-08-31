@@ -60,43 +60,50 @@
                         {{#if data}}
                         {{#each data}}
 
+                        <form action="/removeItemFromCart" method="post">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <div class="item">
+                                <div class="img_div"
+                                    style="background-image: url('{{this.image}}'); background-size: cover;"></div>
 
-                        <div class="item">
+                                <div class="footer">
+                                    <h3>{{this.title}}</h3>
 
-                            <div class="img_div" style="background-image: url("{{this.image}}"); background-size: cover;"></div>
-                          
-                            <div class="footer"> 
-                                    <h3>{{this.title}}</h3> 
- 
-                                    <p>{{this.variant}}</p> 
- 
+                                    <p>{{this.variant}}</p>
+
                                     <div class="rate_qnt">
-                                    <div> 
-                                        &nbsp;<span onclick="encreseItem(this);">{{this.quantity}} + </span>&nbsp;
+                                        <div>
+                                            &nbsp;<span onclick="encreseItem(this);">{{this.quantity}} + </span>&nbsp;
 
-                                        <script>
-                                            function encreseItem(e){
-                                               q = parseInt(e.innerHTML);
-                                               e.innerHTML = q+1 + "    + ";
-                                            }
-                                        </script> 
+                                            <script>
+                                                function encreseItem(e) {
+                                                    q = parseInt(e.innerHTML);
+                                                    e.innerHTML = q + 1 + "    + ";
+                                                }
+                                            </script>
+                                        </div>
+                                        <span style="color: green; font-weight:500;">₹ {{this.rate}}</span>
+                                        <button type="submit"><i
+                                                class="fa fa-trash"></i></button>
                                     </div>
-                                    <span style="color: green; font-weight:500;">₹ {{this.rate}}</span>  
                                 </div>
-                            </div>        
 
-                        </div>
+                            </div>
 
-                        <div class="line">
-                            <hr>  
-                            * 
-                            <hr>
-                        </div> 
-
-                     <button class="ptb">process to buy</button>
+                            <div class="line">
+                                <hr>
+                                *
+                                <hr>
+                            </div>
+                        </form>
                         {{/each}}
                         {{/if}}
 
+
+
+                        {{#if data}}
+                        <button class="ptb">process to buy</button>
+                        {{/if}}
 
                     </div>
                     <div class="copyright">Copyright &copy; kamleen
