@@ -65,21 +65,28 @@
 
 
 
-                        {{#if data}} 
+                        {{#if data}}
 
-                        <div class="item">
-                            <span>{{data.name}}</span>
-                            <span>{{data.id}}</span>
-                            <span>{{data.username}}</span>
+                        <form action="/profileupdate" method="post">
+                        <input type="hidden" value="{{data.id}}" name="id">
+                            <div class="item">
+                                <div class="nameImg">
+                                    <p>{{data.name}}</p>
+                                </div>
+                                <div class="detail">
+                                    <input autocomplete="false" autofocus type="text" name="name" value="{{data.name}}"> <br>
+                                    <input type="text" name="username" value="{{data.username}}">
+                                </div>
                             </div>
+                            <button>Update Profile</button> <br><br><br><br>
+                        </form>
 
-                            
 
                         <div class="line">
                             <hr>
                             *
                             <hr>
-                        </div> 
+                        </div>
                         {{/if}}
 
 

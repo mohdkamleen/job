@@ -324,6 +324,22 @@ app.post('/insert', function (request, response) {
 });
 
 
+
+app.post('/profileupdate', function (request, response) {
+
+
+	var id = request.body.id;
+	var name = request.body.name;
+	var username = request.body.username; 
+
+	conn.query('UPDATE auth SET name=?,username=? WHERE id=?', [name, username, id], function (error, results, fields) {
+		if (error) throw error;
+		response.redirect("/profile")
+	});
+});
+
+
+
 app.post('/userupdate', function (request, response) {
 
 

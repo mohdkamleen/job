@@ -24,17 +24,127 @@
     align-items: center; 
     justify-content: center;
     margin: 10px;  
-    padding: 10px;  
-    max-width: 1000px;
+    padding: 10px;   
     transition: all .3s ease;
     background: rgb(252, 252, 252); 
-}  
-
-.item:hover{ 
     box-shadow: 1px 1px 5px 2px rgb(224, 224, 224),
                 1px 1px 10px 2px rgb(199, 199, 199);
+}  
+
+.detail input:focus{ 
+    box-shadow: 1px 1px 5px 2px rgb(224, 224, 224),
+                1px 1px 10px 2px rgb(199, 199, 199);
+} 
+
+.item:hover,.detail input:focus{ 
+    box-shadow: none;
+} 
+
+.nameImg {
+    font-size: 0px;
+    width: 100px;
+    height: 100px;
+    display: flex;    
+    align-items: center; 
+    justify-content: center;
+    border: 2px solid gray;
+    border-radius: 50%;
+    margin: 20px;
 }
- 
+
+.nameImg p::first-letter {
+    color: rgb(119, 118, 118);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 80px !important;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+.detail{
+    padding: 15px;
+}
+
+.detail input{ 
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: rgb(121, 121, 121);
+    outline: none;
+    font-size: 20px;
+    margin: 10px;
+    padding: 2px;
+    border: none;
+    border-LEFT: 2px solid rgb(75, 75, 75);
+    text-indent: 5px;
+    width: 200px;
+}
+
+button{  
+    padding: 10px 15px; 
+    color: rgb(255, 255, 255);
+    text-transform: uppercase; 
+    transition: all .2s linear 100ms ;     
+    font-weight: 600;
+    border: none;
+    margin: 20px;
+    position: relative; 
+    background: rgb(85, 85, 85);
+    width: 400px;
+    border-radius: 5px; 
+}
+
+button::before{  
+    content: "Update"; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    width: 0%; 
+    transition: all .2s linear ; 
+    border-radius: 5px;  
+    line-height: 35px;
+}
+
+button:hover::before { 
+    width: 100%;  
+    left: 0;
+    box-shadow: 1px 1px 5px 2px rgb(224, 224, 224),
+    1px 1px 10px 2px rgb(199, 199, 199);
+}
+
+button:hover { 
+    color: #2b2b2b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .line{ 
