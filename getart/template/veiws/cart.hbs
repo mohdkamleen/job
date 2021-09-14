@@ -74,12 +74,15 @@
 
                                     <div class="rate_qnt">
                                         <div>
-                                            &nbsp;<span onclick="encreseItem(this);">{{this.quantity}} + </span>&nbsp;
+                                            &nbsp;<label><span><input maxlength="3" style="width: 55px;border:none;padding:4px" onclick="encreseItem(this);" type="text" name="quantity" value="{{this.quantity}}"> + </span></label>&nbsp;
 
                                             <script>
                                                 function encreseItem(e) {
-                                                    q = parseInt(e.innerHTML);
-                                                    e.innerHTML = q + 1 + "    + ";
+                                                    if(e.value == ""){
+                                                        e.value = 1;
+                                                    }
+                                                    q = parseInt(e.value);
+                                                    e.value = q + 1 ;
                                                 }
                                             </script>
                                         </div>

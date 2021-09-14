@@ -62,11 +62,7 @@ var sql = "CREATE TABLE if not exists items (id INT AUTO_INCREMENT PRIMARY KEY, 
 conn.query(sql, (err, res) => {
 	console.log("(items) table created")
 })
-
-// var sql = "DROP DATABASE getart";
-// conn.query(sql, (err, res) => {
-// 	console.log("(items) table created")
-// })
+ 
 
 
 // get and post urls     
@@ -373,11 +369,21 @@ app.post('/removeItemFromCart', function (request, response) {
 	if (request.session.loggedin) {
 
 		var id = request.body.id; 
+		var quantity = request.body.quantity;
 
-		conn.query('UPDATE ' + request.session.username + ' SET inCard = ? WHERE id=? ', [0, id], function (error, results, fields) {
-			if (error) throw error;
-			response.redirect("/cart")
-		});
+		if(quantity == 1){
+			conn.query('UPDATE ' + request.session.username + ' SET inCard = ? WHERE id=? ', [0, id], function (error, results, fields) {
+				if (error) throw error;
+				response.redirect("/cart")
+			});
+		} else {
+			conn.query('UPDATE ' + request.session.username + ' SET inCard = ? WHERE id=? ', [0, id], function (error, results, fields) {
+				if (error) throw error;
+				response.redirect("/cart")
+			});
+		}
+
+		
 	} else {
 		response.redirect("/login")
 	}
