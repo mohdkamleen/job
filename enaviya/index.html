@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Employee Form</h2>
+        <form action="#">
+            <label>
+                Name <br>
+                <input type="text" onkeyup="validateFun(this)">
+            </label> <br>
+
+            <label>
+                Email <br>
+                <input type="text" onkeyup="validateFun(this)">
+            </label> <br>
+
+            <label>
+                Mobile <br>
+                <input type="tel" onkeyup="validateFun(this)">
+            </label> <br>
+
+            <label>
+                D.O.B. <br>
+                <input type="date">
+            </label> <br>
+
+            <label>
+                Country <br>
+                <input list="country-menu" autocomplete="off" onkeyup="validateFun(this)">
+                <datalist id="country-menu">
+                    <option value="India"></option>
+                    <option value="China"></option>
+                </datalist>
+            </label> <br>
+
+            <label>
+                State <br>
+                <input list="state-menu" autocomplete="off" onkeyup="validateFun(this)">
+                <datalist id="state-menu">
+                    <option value="UP"></option>
+                    <option value="MP"></option>
+                    <option value="HP"></option>
+                </datalist>
+            </label> <br> 
+
+            <label>
+                Address <br>
+                <textarea rows="5" onkeyup="validateFun(this)"></textarea>
+            </label> <br>
+
+            <div class="action">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Cancel"> 
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateFun(e){
+            if(e.value == "" || e.value.length < 3){
+                e.style.border = "red 1px solid";
+                return;
+            } else {
+                e.style.border = "gray 1px solid";
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

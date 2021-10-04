@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container {
+  margin: 0px 5%;
+  padding: 50px;
+  width: 100%;
+}
+
+body .container h2 {
+  color: gray;
+  padding: 15px 0px;
+  text-align: center;
+}
+
+body .container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 900px;
+  margin: auto;
+}
+
+body .container form label {
+  color: #4e4e4e;
+  font-weight: 500;
+  margin: 10px;
+}
+
+body .container form label input, body .container form label textarea {
+  border: 1px solid gray;
+  font-size: 16px;
+  padding: 3px;
+  text-indent: 5px;
+  color: #4b4b4b;
+  font-weight: 500;
+  width: 300px;
+  background: transparent;
+}
+
+body .container form label :focus {
+  -webkit-box-shadow: 1px 1px 10px rgba(116, 116, 116, 0.281), 1px 1px 20px rgba(116, 116, 116, 0.281);
+          box-shadow: 1px 1px 10px rgba(116, 116, 116, 0.281), 1px 1px 20px rgba(116, 116, 116, 0.281);
+}
+
+body .container form .action {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container form .action input {
+  padding: 5px;
+  margin: 5px;
+}
+
+@media (min-width: 825px) {
+  textarea {
+    width: 620px !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */
