@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+} 
+.container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background: rgb(236, 236, 236);
+}
+h1{
+    color: rgb(37, 37, 37); 
+    padding: 10px 5px;
+}
+.line{
+    width: 150px;
+    height: 3px;
+    border-radius: 5px;
+    background-color: rgb(255, 42, 106); 
+}
+form{
+    max-width: 400px; 
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 30px 20px;
+    box-shadow: 1px 1px 15px gray;
+    border-top: 7px solid rgba(255, 9, 50, 0.89);
+}
+label{
+    font-size: 15px;
+    font-weight: 500;
+}
+input{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 5px;
+}
+input[type=submit]{
+    background: rgba(255, 23, 62, 0.89);
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 7px;
+}
+input[type=submit]:hover{
+    color: rgb(236, 236, 236);
+}
+p{
+    font-weight: 500;
+    text-align: center;
+    width: 100%;  
+    margin-top: 5px;
+}
+a{
+    font-weight: normal;
+    color: rgb(71, 71, 71);
+    text-decoration: none;
+}
+a:hover{
+    color: gray;
+}
+svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;  
+}
+.btn{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px;
+}
+.btn button{
+    background: rgba(255, 23, 62, 0.89);
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px; 
+}
